@@ -45,7 +45,7 @@ Please be sure indicate what level of detail the workflow you include represents
 
 skin rose
 
-title Update A Location's Crowd (casual level)
+title Update A Location's Crowd (brief level)
 
 'define the lanes
 |#application|Updater|
