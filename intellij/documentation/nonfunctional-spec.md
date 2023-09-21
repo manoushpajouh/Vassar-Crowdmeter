@@ -1,5 +1,9 @@
 # Non-Functional Specifications
 What is not covered in the use-cases:
+## Functionality 
+The app will allow you to view a location on Vassar Campus as well as a number and color rating associated with it. 
+These features correspond to how busy the location is. The user can also rate a location by inputting their own number and the color will change accordingly. Date and time will be saved in order for ratings to be considered up to date.
+
 
 ## Usability 
 1. Color and ratings will correspond. Key notifies user what color responds where
