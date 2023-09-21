@@ -1,75 +1,90 @@
-# Use case name, e.g., process sale 
+
+# Check busyness of a location
 
 ## 1. Primary actor and goals
-Who is the main interested party and what goal(s) this use case is designed to help them achieve. For example, for _process sale_:
 
-__Reporting Student__: Wants to update if the area is busy. Wants to change amounts easily.
+* __Viewing student__: Wants to check how busy a particular location on campus is. If no data is available for that location, might want to view historical data for the current day/time.
 
 
 ## 2. Other stakeholders and their goals
 
-* __Viewing Student__: Wants fast service with minimal effort. Wants accurate, fast data updated Wants easily visible display of locations and crowd amounts. 
+* __Reporting student__: Reports the busyness of their current location
 
+## 3. Preconditions
 
-## 2. Preconditions
-
-What must be true prior to the start of the use case.
-
-* Location is identified and authenticated.
-* Student has to be in the location bounds
+* Location must be available to select in app
+* Student must be able to find the location in the app
+* Data must have been reported by reporting student (or historical data assembled)
 
 ## 4. Postconditions
 
-What must be true upon successful completion of the use case.
+* Student successfully viewed a summary of how busy the location is
 
-* Crowd busyness update is saved.
-* Crowd intensity is recorded and added to the heatmap.
-* Location color on map changes accordingly.
-* Updates are recorded.
+## 5. Workflow
 
-
-## 4. Workflow
-
-The sequence of steps involved in the execution of the use case, in the form of one or more activity diagrams (please feel free to decompose into multiple diagrams for readability).
-
-The workflow can be specified at different levels of detail:
-
-* __Brief__: main success scenario only;
-* __Casual__: most common scenarios and variations;
-* __Fully-dressed__: all scenarios and variations.
-
-Please be sure indicate what level of detail the workflow you include represents. 
 
 ```plantuml
 @startuml
 
 skin rose
 
-title Update A Location's Crowd (casual level)
+title Check Busyness (brief)
 
 'define the lanes
-|#application|Updater|
-|#technology|Viewer|
-|#implementation|System|
+|#application|Viewing student|
+|#technology|App|
+|#implementation|Reporting student|
 
-|Updater|
-start
-:Arrive at location;
-:Find location on app;
-:Enter new rating;
+|Reporting student|
+start 
+:Reports crowd rating for current location;
 
-|System|
-:Save new rating;
-:Display new rating;
+|App|
+:Aggregates crowd reports from several reporting students for each location;
 
+|Viewing student|
+:Searches for desired location in app;
 
-|Viewer|
-:View new rating;
+|App|
+:Displays overall crowd rating;
 
-stop
+|Viewing student|
+:Views the overall crowd rating;
+
 @enduml
 ```
 
+```plantuml
+@startuml
 
+skin rose
 
+title Check Busyness (casual)
 
+'define the lanes
+|#application|Viewing student|
+|#technology|App|
+|#implementation|Reporting student|
+
+|Reporting student|
+start 
+:Reports crowd rating for current location;
+
+|App|
+:Aggregates crowd reports from several reporting students for each location;
+
+|Viewing student|
+:Searches for desired location in app;
+
+|App| 
+if (Is data available?) is (Yes) then 
+:Displays overall crowd rating;
+else (No)
+: Displays historical data for that location;
+endif
+
+|Viewing student|
+:Views the overall crowd rating;
+
+@enduml
+```
