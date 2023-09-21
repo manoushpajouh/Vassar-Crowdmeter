@@ -1,3 +1,4 @@
+
 # Check busyness of a location
 
 ## 1. Primary actor and goals
@@ -20,6 +21,7 @@
 * Student successfully viewed a summary of how busy the location is
 
 ## 5. Workflow
+
 
 ```plantuml
 @startuml
