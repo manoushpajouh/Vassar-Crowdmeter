@@ -2,10 +2,14 @@
 The following uncommon terms and definitions occur frequently in the documentation or the app itself
 
 ## In Documentation
-None as of yet 
 
+* __Updater__: the person who is updated the rating of a location 
+* __Reviewer__: see Updater (synonymous)
+* __Viewer__: user who is not changing location, merely viewing the rating of a location
+* 
 ## In App 
 
 The following are predicted to be used going forward:
-* __Deece__: Also known as __Gordon Commons__, the dining hall of Vassar College 
-* 
+
+Word: definition (type) (Alias if any)
+* __Deece__:  the dining hall of Vassar College (String format) (Gordon Commons)
