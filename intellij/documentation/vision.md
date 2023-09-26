@@ -41,7 +41,7 @@ Actors include: Reporting User, Viewing User, System
 skin rose 
 
 ' human actors
-actor "Reporter/Updater" as updater
+actor "Rater" as rater
 actor "Viewer" as viewer
 actor "Adder" as adder
 
@@ -55,8 +55,8 @@ usecase "Add Location" as addLocation
 }
 ' list relationships between actors and use cases
 viewer --> checkBusy
-updater --> reportBusy
-updater --> checkBusy
+rater --> reportBusy
+rater --> checkBusy
 adder --> addLocation
 adder --> checkBusy
 
