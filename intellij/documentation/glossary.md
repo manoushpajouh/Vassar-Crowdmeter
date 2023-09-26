@@ -13,3 +13,5 @@ The following are predicted to be used going forward:
 
 Word: definition (type) (Alias if any)
 * __Deece__:  the dining hall of Vassar College (String format) (Gordon Commons)
+* __Library__: refers specifically to the Vassar College library 
+* __Main Building__: refers to Main Building on the Vassar campus, particularly the areas that contain seating for eating meals 
