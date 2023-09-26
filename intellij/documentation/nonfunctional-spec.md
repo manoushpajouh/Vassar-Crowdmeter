@@ -17,7 +17,7 @@ These features correspond to how busy the location is. The user can also rate a 
 
 
 ## Reliability 
-    If system fails and most recently reported rating cannot be found: display error message and most recent reporting for the area saved on system
+If system fails and most recently reported rating cannot be found: display error message and most recent reporting for the area saved on system
 
 ## Performance
 
