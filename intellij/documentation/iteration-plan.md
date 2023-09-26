@@ -16,10 +16,10 @@ High Rank
     * have to already have a location in order for it to work 
     * most important action for the user to take --> most likely to crash
 
-Middle
+Middle Rank 
 * __Viewing Location__
   * the most used component of the app (can view rating without having to rate)
 
-Low 
+Low Rank
 * __Adding New Location__
   * have to make sure it does not overwrite other locations 
