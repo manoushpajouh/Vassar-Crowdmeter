@@ -1,5 +1,5 @@
 # Glossary 
-The following uncommon terms and definitions occur frequently in the documentation or the app itself
+The following terms and definitions occur frequently in the documentation or the app itself
 
 ## In Documentation
 
