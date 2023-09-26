@@ -16,14 +16,13 @@ These features correspond to how busy the location is. The user can also rate a 
 2. Display message if there are no new reports for a certain area after 1 hour.  
 
 
-## Reliability 
+## Reliability
 
 If system fails and most recently reported rating cannot be found: display error message and most recent reporting for the area saved on system.
 
 ## Performance
 
 Students want updates made efficiently. The app should modify its overall crowd rating for a location as soon as new information in the form of updates from students is available.  
-
 
 ## Supportability 
 Internalization of displayed text (units, numbers, dates). 
