@@ -17,14 +17,16 @@ These features correspond to how busy the location is. The user can also rate a 
 
 
 ## Reliability 
-    If system fails and most recently reported rating cannot be found: display error message and most recent reporting for the area saved on system
+
+If system fails and most recently reported rating cannot be found: display error message and most recent reporting for the area saved on system.
 
 ## Performance
 
-Students want updates made efficiently. 
+Students want updates made efficiently. The app should modify its overall crowd rating for a location as soon as new information in the form of updates from students is available.  
+
 
 ## Supportability 
-Internalization of displayed text (units, numbers, dates)
+Internalization of displayed text (units, numbers, dates). 
 
 ## Implementation
 Software must run on Android software on portrait mode.
@@ -32,3 +34,7 @@ Software written using Java.
 
 ## External Interfaces 
 None as of yet. 
+
+## Legal 
+
+None so far. 

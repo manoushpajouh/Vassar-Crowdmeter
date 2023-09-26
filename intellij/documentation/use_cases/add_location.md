@@ -17,7 +17,8 @@ __Adding student__: Wants to add a location to the app. The new location should 
 
 ## 4. Postconditions
 
-* Location is now available in app to all users 
+* Location is now available in app to for all users to find 
+  * Users are now able to report on the crowd at that location and check the current aggregate crowd rating 
 * Adding student is notified that the location was added 
 
 ## 4. Workflow
@@ -27,7 +28,7 @@ __Adding student__: Wants to add a location to the app. The new location should 
 
 skin rose
 
-title Process sale (casual)
+title Add location (casual)
 
 'define the lanes
 |#application|Adding student|
@@ -46,6 +47,9 @@ start
 |Reporting student|
 :Search for location; 
 :Report crowd at location;
+
+|App|
+:Integrate student's report into overall crowd rating;
 
 |Viewing student|
 :Search for location; 
