@@ -3,8 +3,7 @@ The following terms and definitions occur frequently in the documentation or the
 
 ## In Documentation
 
-* __Updater__: the person who is updated the rating of a location 
-* __Reviewer__: see Updater (synonymous)
+* __Rater__: the user who is updating/adding the rating of a location 
 * __Viewer__: user who is not changing location, merely viewing the rating of a location
 
 ## In App 
