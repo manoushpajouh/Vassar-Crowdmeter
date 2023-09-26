@@ -1,7 +1,7 @@
 # Report Busyness
 
 ## 1. Primary actor and goals
-* __Updater__: Wants to update if the area is busy. Wants to change amounts easily.
+* __Rater__: Wants to update if the area is busy. Wants to change amounts easily.
 
 * __System__: save and display the ratings
 
@@ -34,23 +34,26 @@ What must be true upon successful completion of the use case.
 
 skin rose
 
-title Update Location's Crowd Rating (brief)
+title Report Busyness (brief)
 
 'define the lanes
-|#application|Updater|
+|#application|Rater|
 |#technology|App|
 
-|Updater|
+|Rater|
 start
-:Arrives at location;
-:Finds location on app;
-:Enters new rating;
+:Open App;
+:Choose Location to Rate;
+if (Location Already Exists?) then (yes)
+:Enter New Rating;
+else (no)
+:Execute __Add Location__;
+endif
+
 
 |App|
-:Saves new rating;
-:Integrates ratings from many students into overall crowd report;
-
-stop
+:Save new rating;
+:Display new rating;
 @enduml
 ```
 

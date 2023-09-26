@@ -25,9 +25,9 @@ Features include:
 
 ## Goals per Actor 
 
-Actors include: Reporting User, Viewing User, System 
+Actors include: Rating User, Viewing User, System 
 
-* __Reporter/Updater__: Report a busyness quickly with minimal effort 
+* __Rater__: Report a busyness quickly with minimal effort 
 * __Viewer__: To see the rating and color of specific location searched
   * If no location was searched: can access list of busiest and emptiest locations 
 * __Adder__: Adds a new location to the list of locations available to be rated 
@@ -41,30 +41,25 @@ Actors include: Reporting User, Viewing User, System
 skin rose 
 
 ' human actors
-actor "Reporter/Updater" as updater
+actor "Rater" as rater
 actor "Viewer" as viewer
 actor "Adder" as adder
 
-' system actors
-actor "Location Ratings" <<system>> as locationRatings
-actor "Location List" <<system>> as allLocations
+
 
 ' list all use cases in package
 package "Application Uses" {
-usecase "View Rating" as viewRate
-usecase "Change Rating" as changeRate
+usecase "Check Busyness" as checkBusy
+usecase "Report Busyness" as reportBusy
 usecase "Add Location" as addLocation
 }
 ' list relationships between actors and use cases
-viewer --> viewRate
-updater --> changeRate
-updater --> viewRate
+viewer --> checkBusy
+rater --> reportBusy
+rater --> checkBusy
 adder --> addLocation
-adder --> viewRate
-changeRate --> locationRatings
-viewRate --> locationRatings
-viewRate --> allLocations
-addLocation--> allLocations
+adder --> checkBusy
+
 
 @enduml
 ```

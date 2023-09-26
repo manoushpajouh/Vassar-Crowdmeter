@@ -2,18 +2,19 @@
 
 ## 1. Primary actor and goals
 
-__Adding student__: Wants to add a location to the app. The new location should be fully integrated into all the app's features and searchable by other users.
+__Adder__: Wants to add a location to the app. The new location should be fully integrated into all the app's features and searchable by other users.
 
 
 ## 2. Other stakeholders and their goals
 
-* __Viewing student__: Needs to be able to find the location and check how crowded it currently is
-* __Reporting student__: Needs to be able to find the location in the app in order to report how crowded it currently is
+* __Viewer__: Needs to be able to find the location and check how crowded it currently is
+* __Rater__: Needs to be able to find the location in the app in order to report how crowded it currently is
 
 
 ## 2. Preconditions
 
 * User must have downloaded the app 
+* The app must not already exist in the database of Vassar buildings 
 
 ## 4. Postconditions
 
@@ -31,29 +32,31 @@ skin rose
 title Add location (casual)
 
 'define the lanes
-|#application|Adding student|
+|#application|Adder|
 |#technology|App|
-|#implementation|Reporting student|
-|#orchid|Viewing student|
 
-|Adding student|
+|Adder|
 start
-:Add location to app;
+:Choose desired spot for new location;
+:Input name and area for location in app;
 
 |App|
 :Save location details specified by user; 
 :Make location available to be viewed by other users;
 
-|Reporting student|
+|Adder|
 :Search for location; 
-:Report crowd at location;
+
+if (Has Rating?) then (yes)
+:Execute __Check Busyness__;
+else (no)
+:Execute __Report Busyness__;
+endif
+
 
 |App|
 :Integrate student's report into overall crowd rating;
 
-|Viewing student|
-:Search for location; 
-:View crowd information for location; 
 
 @enduml
 ```

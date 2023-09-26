@@ -7,11 +7,11 @@ These features correspond to how busy the location is. The user can also rate a 
 
 ## Usability 
 1. Color and ratings will correspond. Key notifies user what color responds where
-   2. Dark Green = 1 (very empty)
-   3. Light Green = 2 (considerably empty )
-   4. Yellow = 3 (moderately full)
-   5. Orange = 4 (pretty full)
-   6. Red = 5 (very full)
+   * Dark Green = 1 (very empty)
+   * Light Green = 2 (considerably empty )
+   * Yellow = 3 (moderately full)
+   * Orange = 4 (pretty full)
+   * Red = 5 (very full)
    
 2. Display message if there are no new reports for a certain area after 1 hour.  
 
