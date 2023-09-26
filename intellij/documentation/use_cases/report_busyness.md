@@ -1,9 +1,9 @@
 # Report Busyness
 
 ## 1. Primary actor and goals
-__Updater__: Wants to update if the area is busy. Wants to change amounts easily.
+* __Updater__: Wants to update if the area is busy. Wants to change amounts easily.
 
-__System__: save and display the ratings
+* __System__: save and display the ratings
 
 ## 2. Other stakeholders and their goals
 
