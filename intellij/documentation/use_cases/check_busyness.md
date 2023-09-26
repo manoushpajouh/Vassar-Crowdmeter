@@ -28,29 +28,30 @@
 
 skin rose
 
-title Check Busyness (brief)
+title Check Busyness (casual)
 
 'define the lanes
-|#application|Viewing student|
 |#technology|App|
-|#implementation|Reporting student|
-
-|Reporting student|
-start 
-:Reports crowd rating for current location;
+|#application|Viewing student|
 
 |App|
-:Aggregates crowd reports from several reporting students for each location;
+while (Is viewing student done checking?) is (no)
+:Displays locations;
 
 |Viewing student|
-:Searches for desired location in app;
+:Selects desired location;
 
 |App|
 :Displays overall crowd rating;
 
 |Viewing student|
 :Views the overall crowd rating;
-
+if (Does student want to report?) is (yes) then 
+:Execute __report busyness__;
+else (no)
+endif
+endwhile (yes)
+:End; 
 @enduml
 ```
 
@@ -59,25 +60,21 @@ start
 
 skin rose
 
-title Check Busyness (casual)
+title Check Busyness (fully dressed)
 
 'define the lanes
-|#application|Viewing student|
 |#technology|App|
-|#implementation|Reporting student|
-
-|Reporting student|
-start 
-:Reports crowd rating for current location;
+|#application|Viewing student|
 
 |App|
-:Aggregates crowd reports from several reporting students for each location;
+while (Is viewing student done checking?) is (no)
+:Displays locations;
 
 |Viewing student|
-:Searches for desired location in app;
+:Selects desired location;
 
-|App| 
-if (Is data available?) is (Yes) then 
+|App|
+if (Is data available?) is (Yes) then
 :Displays overall crowd rating;
 else (No)
 : Displays historical data for that location;
@@ -85,6 +82,13 @@ endif
 
 |Viewing student|
 :Views the overall crowd rating;
-
+if (Does student want to report?) is (yes) then 
+:Execute __report busyness__;
+else (no)
+endif
+endwhile (yes)
+:End; 
 @enduml
 ```
+
+

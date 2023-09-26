@@ -38,22 +38,17 @@ title Update Location's Crowd Rating (brief)
 
 'define the lanes
 |#application|Updater|
-|#technology|Viewer|
-|#implementation|System|
+|#technology|App|
 
 |Updater|
 start
-:Arrive at location;
-:Find location on app;
-:Enter new rating;
+:Arrives at location;
+:Finds location on app;
+:Enters new rating;
 
-|System|
-:Save new rating;
-:Display new rating;
-
-
-|Viewer|
-:View new rating;
+|App|
+:Saves new rating;
+:Integrates ratings from many students into overall crowd report;
 
 stop
 @enduml
