@@ -7,7 +7,7 @@ __System__: save and display the ratings
 
 ## 2. Other stakeholders and their goals
 
-* __Viewing Student__: Wants fast service with minimal effort. Wants accurate, fast data updated Wants easily visible display of locations and crowd amounts. 
+* __Viewer__: Wants fast service with minimal effort. Wants accurate, fast data updated Wants easily visible display of locations and crowd amounts. 
 
 
 ## 2. Preconditions
