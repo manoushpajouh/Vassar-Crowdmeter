@@ -45,26 +45,21 @@ actor "Reporter/Updater" as updater
 actor "Viewer" as viewer
 actor "Adder" as adder
 
-' system actors
-actor "Location Ratings" <<system>> as locationRatings
-actor "Location List" <<system>> as allLocations
+
 
 ' list all use cases in package
 package "Application Uses" {
-usecase "View Rating" as viewRate
-usecase "Change Rating" as changeRate
+usecase "Check Busyness" as checkBusy
+usecase "Report Busyness" as reportBusy
 usecase "Add Location" as addLocation
 }
 ' list relationships between actors and use cases
-viewer --> viewRate
-updater --> changeRate
-updater --> viewRate
+viewer --> checkBusy
+updater --> reportBusy
+updater --> checkBusy
 adder --> addLocation
-adder --> viewRate
-changeRate --> locationRatings
-viewRate --> locationRatings
-viewRate --> allLocations
-addLocation--> allLocations
+adder --> checkBusy
+
 
 @enduml
 ```
