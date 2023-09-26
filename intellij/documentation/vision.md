@@ -25,9 +25,9 @@ Features include:
 
 ## Goals per Actor 
 
-Actors include: Reporting User, Viewing User, System 
+Actors include: Rating User, Viewing User, System 
 
-* __Reporter/Updater__: Report a busyness quickly with minimal effort 
+* __Rater__: Report a busyness quickly with minimal effort 
 * __Viewer__: To see the rating and color of specific location searched
   * If no location was searched: can access list of busiest and emptiest locations 
 * __Adder__: Adds a new location to the list of locations available to be rated 
