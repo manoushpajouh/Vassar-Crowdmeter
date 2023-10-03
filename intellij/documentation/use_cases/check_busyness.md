@@ -22,39 +22,6 @@
 
 ## 5. Workflow
 
-
-```plantuml
-@startuml
-
-skin rose
-
-title Check Busyness (casual)
-
-'define the lanes
-|#technology|App|
-|#application|Viewing student|
-
-|App|
-while (Is viewing student done checking?) is (no)
-:Displays locations;
-
-|Viewing student|
-:Selects desired location;
-
-|App|
-:Displays overall crowd rating;
-
-|Viewing student|
-:Views the overall crowd rating;
-if (Does student want to report?) is (yes) then 
-:Execute __report busyness__;
-else (no)
-endif
-endwhile (yes)
-:End; 
-@enduml
-```
-
 ```plantuml
 @startuml
 
@@ -82,7 +49,12 @@ endif
 
 |Viewing student|
 :Views the overall crowd rating;
-if (Does student want to report?) is (yes) then 
+while (Does student want to change time period for crowd rating?) is (yes)
+|App|
+:Execute __change_time_period__;
+endwhile (no)
+|Viewing student|
+if (Does student want to report?) is (yes) then
 :Execute __report busyness__;
 else (no)
 endif
