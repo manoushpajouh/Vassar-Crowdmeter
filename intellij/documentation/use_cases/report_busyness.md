@@ -64,6 +64,7 @@ else (no)
 |App|
 :Save new rating;
 :Display new rating;
+:Save and Display Time of Rating;
 :Display countdown-timer for 10 minutes;
 endif
 :Prevent Rater to restart until timer runs out;
