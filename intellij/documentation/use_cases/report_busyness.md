@@ -40,18 +40,34 @@ title Report Busyness (brief)
 
 |Rater|
 start
-:Choose Location to Rate;
-if (Location Already Exists?) then (yes)
-:Enter New Rating;
+if (Timer Still Counting Down?) then (yes)
 else (no)
-:Execute __Add Location__;
-endif
-
+    :Choose Location to Rate;
+        if (Location Already Exists?) then (yes)
+        
+        else (no)
+        :Execute __Add Location__;
+        endif
+     :Enter New Rating;
+     
+        if (Add Comment?) then (yes)
+            |App|
+            :Open Comment Screen;
+            |Rater|
+            :Type Comment;
+            |App|
+            :Display Comment;
+      
+         else (no)
+        endif
 
 |App|
 :Save new rating;
 :Display new rating;
 :Display countdown-timer for 10 minutes;
+endif
+:Prevent Rater to restart until timer runs out;
+stop
 @enduml
 ```
 
