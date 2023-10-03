@@ -51,11 +51,12 @@ if (Has Rating?) then (yes)
 :Execute __Check Busyness__;
 else (no)
 :Execute __Report Busyness__;
+|App|
+:Integrate student's report into overall crowd rating;
 endif
 
 
-|App|
-:Integrate student's report into overall crowd rating;
+
 
 
 @enduml
