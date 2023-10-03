@@ -3,7 +3,6 @@
 ## 1. Primary actor and goals
 * __Rater__: Wants to update if the area is busy. Wants to change amounts easily.
 
-* __System__: save and display the ratings
 
 ## 2. Other stakeholders and their goals
 
@@ -15,7 +14,6 @@
 What must be true prior to the start of the use case.
 
 * App has to be downloaded
-* Location is identified
 
 ## 4. Postconditions
 
@@ -42,7 +40,6 @@ title Report Busyness (brief)
 
 |Rater|
 start
-:Open App;
 :Choose Location to Rate;
 if (Location Already Exists?) then (yes)
 :Enter New Rating;
@@ -54,6 +51,7 @@ endif
 |App|
 :Save new rating;
 :Display new rating;
+:Display countdown-timer for 10 minutes;
 @enduml
 ```
 
