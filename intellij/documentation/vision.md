@@ -31,7 +31,6 @@ Actors include: Rating User, Viewing User, System
 * __Viewer__: To see the rating and color of specific location searched
   * If no location was searched: can access list of busiest and emptiest locations 
 * __Adder__: Adds a new location to the list of locations available to be rated 
-* __System__: Update the location's color depending on what the user inputs as a new rating, save old ratings from users, update ratings efficiently
 
 ### Use Case Diagram 
 
