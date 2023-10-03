@@ -3,10 +3,10 @@
 ## 1. Primary actor and goals
 
 * __Admin__: able to edit or delete a particular location in order to prevent duplicate locations, fake locations, etc.
-
+    * Admins are only developers in this version of the ap 
 ## 2. Other stakeholders and their goals
 
-* __ARE THERE ?????????????????__
+* None
 
 ## 3. Preconditions
 
