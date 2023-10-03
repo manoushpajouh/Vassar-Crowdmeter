@@ -1,18 +1,15 @@
 # Non-Functional Specifications
 What is not covered in the use-cases:
-## Functionality 
-The app will allow you to view a location on Vassar Campus as well as a number and color rating associated with it. 
-These features correspond to how busy the location is. The user can also rate a location by inputting their own number and the color will change accordingly. Date and time will be saved in order for ratings to be considered up to date.
 
 
 ## Usability 
 1. Color and ratings will correspond. Key notifies user what color responds where
    * Dark Green = 1 (very empty)
-   * Light Green = 2 (considerably empty )
+   * Light Green = 2 (considerably empty)
    * Yellow = 3 (moderately full)
    * Orange = 4 (pretty full)
    * Red = 5 (very full)
-   
+     * see nonfunctional specifications document (nonfunctional-spec.md) for more information 
 2. Display message if there are no new reports for a certain area after 1 hour.  
 
 
@@ -25,7 +22,7 @@ If system fails and most recently reported rating cannot be found: display error
 Students want updates made efficiently. The app should modify its overall crowd rating for a location as soon as new information in the form of updates from students is available.  
 
 ## Supportability 
-Internalization of displayed text (units, numbers, dates). 
+Not necessary to be internationally friendly since the app is specific to Vassar College.
 
 ## Implementation
 Software must run on Android software on portrait mode.
@@ -34,6 +31,9 @@ Software written using Java.
 ## External Interfaces 
 None as of yet. 
 
-## Legal 
-
+## Legal
 None so far. 
+
+## Other 
+
+Users can report busyness once every 10 minutes. 
