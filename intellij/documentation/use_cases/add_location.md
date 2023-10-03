@@ -38,6 +38,10 @@ title Add location (casual)
 |Adder|
 start
 :Choose desired spot for new location;
+|App|
+:Open campus map to show all locations;
+
+|Adder|
 :Input name and area for location in app;
 
 |App|
