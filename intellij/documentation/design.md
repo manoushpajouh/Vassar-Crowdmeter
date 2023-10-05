@@ -10,14 +10,24 @@ hide circle
 
 ' classes 
 
-class Location {
-name
-rating
+class User{
+username
 }
 
-class Comments {
-username
+class userRating{
+number
+color
 comment
+}
+
+class LocationsOptions{
+locations
+}
+
+class Location{
+name
+rating
+commentSection
 }
 
 class ratingTimer{
@@ -30,28 +40,13 @@ minutes
 seconds
 }
 
-class userRating{
-number
-color
-comment
-}
-
-class User{
-username
-}
-
-class LocationsOptions{
-locations
-}
-
-
 ' associations 
 userRating "1"  - "1" Location : \t describes \t
 userRating "*" -- "1" ratingTimer : initiates/depends-on \t
 User "1..*" -- "1..*" userRating : creates
-worldClock "1" -right- "1..*" userRating : \t is saved by \t
+worldClock "1" -right- "1..*" userRating : \t is-saved-by \t
 LocationsOptions "1" -down- "*" Location : contains
-Location "1" -- "*" Comments: contains
+User "1..*" -right- "1" LocationsOptions: \t searches-through\t
 
 @enduml
 ```
@@ -65,49 +60,56 @@ Location "1" -- "*" Comments: contains
 class User{
 username: String
 --
-...
+getUser(): String
+}
+
+class userRating{
+number: int
+color: String
+comment: String
+--
+makeRating(): void
+showColor(): String 
+showTime(): String
+writeComment(wantToWrite: boolean): String
 }
 
 class LocationsOptions{
-locations : Location ArrayList 
+locationsList: Location ArrayList 
 --
-getLocation() : Location
+locationExists(): boolean
+getLocation(): Location
+makeNewLocation(): void
 }
 
 class Location {
-name : String
-rating : double
-commentSection : String Linked List 
+name: String
+rating: double
+commentSection: String Linked List 
 --
-toString(): String
+getRating(): double
+showComments(): Comment
 }
 
 class ratingTimer{
-minutes : int
-seconds : int
+minutes: int
+seconds: int
 --
 getTime(): String 
 updateTimer: String
 }
 
 class worldClock{
-minutes : int
-seconds : int
+minutes: int
+seconds: int
 --
-updateTime(): void
 getTime(): String
-}
-
-class userRating{
-number : int
-color : String
-comment : String
---
-...
+updateTime(): void
 }
 
 
 User .down.> userRating
+User .> LocationsOptions
 userRating .right.> Location
 LocationsOptions .down.> Location
 userRating .down.> ratingTimer
