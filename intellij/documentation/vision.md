@@ -42,7 +42,9 @@ skin rose
 ' human actors
 actor "Rater" as rater
 actor "Viewer" as viewer
-actor "Adder" as adder
+actor "Adder" as adderadder --> addLocation
+adder --> checkBusy
+actor "Admin" as admin
 
 
 
@@ -51,14 +53,21 @@ package "Application Uses" {
 usecase "Check Busyness" as checkBusy
 usecase "Report Busyness" as reportBusy
 usecase "Add Location" as addLocation
+usecase "Search Locations" as searchLocation
+usecase "Change Time Period" as changeTime
+usecase "Manage Location" as manageLocation 
+
+
 }
 ' list relationships between actors and use cases
-viewer --> checkBusy
+rater --> searchLocation
 rater --> reportBusy
-rater --> checkBusy
+viewer --> searchLocation
+viewer --> checkBusy
+viewer --> changeTime
 adder --> addLocation
 adder --> checkBusy
-
+admin --> manageLocation
 
 @enduml
 ```
