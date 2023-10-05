@@ -13,7 +13,7 @@ hide circle
 class Location {
 name
 rating
-comments
+commentSection
 }
 
 class ratingTimer{
@@ -32,13 +32,18 @@ color
 comment
 }
 
+class User{
+username
+}
+
 
 
 
 ' associations 
-userRating - Location : describes
-userRating -- ratingTimer : depends-on
-
+userRating "1"  - "1" Location : \t describes \t
+userRating "*" -- "1" ratingTimer : depends-on \t
+User "1..*" -- "1..*" userRating : creates
+worldClock "1" -right- "1..*" userRating : \t is saved by \t
 
 @enduml
 ```
