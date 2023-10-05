@@ -23,3 +23,7 @@ Middle Rank
 Low Rank
 * __Adding Location__
   * have to make sure it does not overwrite other locations 
+* __Manage Location__ 
+  * for administrators only 
+* __Change Time Period__
+  * special feature to aggregate crowd reports 
