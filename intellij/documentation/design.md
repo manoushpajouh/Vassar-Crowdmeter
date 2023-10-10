@@ -1,5 +1,4 @@
-# Domain Model for Entire Program
-
+# OVERALL DOMAIN MODEL 
 ```plantuml
 @startuml
 
@@ -52,7 +51,7 @@ User "1..*" -right- "1" LocationsOptions: \t searches-through\t
 ```
 
 
-# DESIGN CLASS DIAGRAM  
+# OVERALL DESIGN CLASS DIAGRAM  
 
 ```plantuml
 @startuml
@@ -68,10 +67,10 @@ number: int
 color: String
 comment: String
 --
-makeRating(): void
+canRate(): bool
 showColor(): String 
 showTime(): String
-writeComment(wantToWrite: boolean): String
+makeRating(number: int, color: String, comment: String): userRating
 }
 
 class LocationsOptions{
@@ -84,10 +83,10 @@ makeNewLocation(): void
 
 class Location {
 name: String
-rating: double
+allRatings: Int Linked List 
 commentSection: String Linked List 
 --
-getRating(): double
+getRatingAve(): double
 showComments(): Comment
 }
 
@@ -97,6 +96,7 @@ seconds: int
 --
 getTime(): String 
 updateTimer: String
+timeOver(): bool
 }
 
 class worldClock{
@@ -136,3 +136,148 @@ ui -> user: view location info
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Report Busyness Sequence Diagram 
+
+```plantuml
+@startuml
+actor Rater as rater 
+participant " : User Interface" as ui
+participant " : Controller" as controller
+participant " : Location" as location 
+participant " : LocationsOptions" as locOps 
+participant " : userRating" as ratings 
+participant " : worldClock" as clock 
+participant " : ratingTimer" as timer 
+
+
+
+rater -> ui  : select "Rate A Location"
+ui -> controller : run timeOver()
+controller -> timer : timeOver()
+timer -> controller : return timeOver
+controller -> ratings  : canRate()
+ratings -> controller : return canRate()
+alt canRate()
+
+controller -> locOps :  get locationsList
+locOps -> ui : return locationsList
+ui ->  rater : display locationsList
+rater -> ui : select a location
+ui -> controller : run locationExists
+controller -> locOps: locationExists
+
+alt !locationExists()
+locOps -> location : Execute __Add Location__ 
+location -> controller : return location 
+else locationExists()
+locOps  -> location : getLocation()
+location -> controller : return location 
+end
+
+controller -> ui : Open Textbox for User 
+ui -> rater : Display Textbox to Rate
+rater -> ui : Enter Rating Requirements
+ui -> controller : Input into makeRating
+controller -> ratings : makeRating(number: int, color: String, comment: String)
+
+
+ratings -> timer : updateTime();
+timer -> ui : getTime()
+ui -> rater : Display "Time Until Next Rating"
+
+
+else !canRate()
+controller -> ui : No Rating Made 
+ui -> rater : Display "Timer Not Yet Over"
+end
+
+
+@enduml
+```

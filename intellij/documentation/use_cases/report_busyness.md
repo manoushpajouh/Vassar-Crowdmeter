@@ -51,17 +51,7 @@ else (no)
         endif
      :Enter New Rating;
      
-        if (Add Comment?) then (yes)
-            |App|
-            :Open Comment Screen;
-            |Rater|
-            :Type Comment;
-            |App|
-            :Display Comment;
-      
-         else (no)
-        endif
-
+       
 |App|
 :Save new rating;
 :Display new rating;
