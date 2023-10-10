@@ -124,104 +124,16 @@ worldClock .right.> userRating
 
 ```plantuml
 actor User as user
-participant " :UserInterface" as ui
+participant " :User Interface" as ui
 participant " :Locations"  as locations
 locations -> ui: toString()
-ui -> user: display location names
+ui -> user: display location.name for each location
 user -> ui: input desired location name
 ui -> locations: desired location name
 locations -> ui: desiredLocation.toString()
-ui -> user: view location info
+ui -> user: display location info
 @enduml
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Report Busyness Sequence Diagram 
 
