@@ -38,10 +38,11 @@ title Report Busyness (brief)
 |#application|Rater|
 |#technology|App|
 
-|Rater|
+|App|
 start
 if (Timer Still Counting Down?) then (yes)
 else (no)
+|Rater|
     :Choose Location to Rate;
         if (Location Already Exists?) then (yes)
         
