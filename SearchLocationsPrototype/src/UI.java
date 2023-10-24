@@ -21,7 +21,7 @@ public class UI {
        String searchLoc = s.nextLine();
 
        SearchName sn = new SearchName();
-       System.out.println(sn.searchName(searchLoc, c.locations));
+       System.out.println(sn.search(searchLoc, c.locations));
        if (c.searchByName(searchLoc) == null){ // if user input does not match any locations, say so
            System.out.println("No locations match your search.");
        }
