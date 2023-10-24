@@ -181,7 +181,8 @@ controller -> ratings : makeRating(number: int, color: String, comment: String)
 
 
 ratings -> timer : updateTime();
-timer -> ui : getTime()
+timer -> controller : return getTime()
+controller -> ui : display getTime()
 ui -> rater : Display "Time Until Next Rating"
 
 
@@ -196,29 +197,6 @@ end
 
 # Check Busyness Sequence Diagram
 
-is user done viewing 
-    yes 
-        end 
-    no 
-        display locations 
-        select desired location 
-        is data available 
-            yes 
-                display overall crowd rating
-            no 
-                display history of ratings 
-        overall crowd rating
-        change  time period?
-            yes 
-                execute time period change
-            no 
-                add report?
-                    yes 
-                        execute report busyness
-                    no  
-                        still viewing?
-
-
 ```plantuml
 @startuml
 actor Viewer as viewer 
@@ -231,10 +209,31 @@ participant " : worldClock" as clock
 participant " : ratingTimer" as timer 
 
 viewer -> ui : 
+
 ui -> controller : display locations 
 controller -> locOps :  get locationsList
-locOps -> controller : return locationsList
-controller -> ui : 
-ui ->  rater : display locationsList
+locOps -> ui : return locationsList
+ui -> viewer : display locationsList
+viewer -> ui : select location
 
-rater -> ui : select location 
+alt locationExists() 
+ui -> controller : 
+controller -> location: getRatingAve()
+location -> controller : return getRatingAve()
+controller -> ui : display getRatingAve()
+ui -> viewer : display "Want To Add Rating?" and "Yes" "No" options
+    alt yes
+    viewer -> ui : Choose "Yes"
+    ui -> controller : Execute __Report Busyness__
+    
+    else no 
+    viewer -> ui : Choose "No" 
+    ui -> controller : Close  
+    end
+
+
+
+else !locationExists()
+ui -> controller: execute __Add Location__
+
+end
