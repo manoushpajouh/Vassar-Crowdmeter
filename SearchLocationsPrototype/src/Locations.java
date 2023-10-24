@@ -14,5 +14,4 @@ public class Locations {
         locations.add(deece);
         locations.add(library);
     }
-
 }

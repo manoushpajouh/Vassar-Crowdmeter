@@ -62,15 +62,14 @@ username: String
 getUser(): String
 }
 
-class userRating{
+class Rating{
 number: int
 color: String
 comment: String
 --
 canRate(): bool
-showColor(): String 
+assignColor(): String 
 showTime(): String
-makeRating(number: int, color: String, comment: String): userRating
 }
 
 class LocationsOptions{
@@ -108,12 +107,12 @@ updateTime(): void
 }
 
 
-User .down.> userRating
+User .down.> Rating
 User .> LocationsOptions
-userRating .right.> Location
+Rating .right.> Location
 LocationsOptions .down.> Location
-userRating .down.> ratingTimer
-worldClock .right.> userRating
+Rating .down.> ratingTimer
+worldClock .right.> Rating
 
 @enduml
 ```
@@ -150,7 +149,7 @@ participant " : User Interface" as ui
 participant " : Controller" as controller
 participant " : Location" as location 
 participant " : LocationsOptions" as locOps 
-participant " : userRating" as ratings 
+participant " : Rating" as ratings 
 participant " : worldClock" as clock 
 participant " : ratingTimer" as timer 
 
@@ -210,7 +209,7 @@ participant " : User Interface" as ui
 participant " : Controller" as controller
 participant " : Location" as location 
 participant " : LocationsOptions" as locOps 
-participant " : userRating" as ratings 
+participant " : Rating" as ratings 
 participant " : worldClock" as clock 
 participant " : ratingTimer" as timer 
 

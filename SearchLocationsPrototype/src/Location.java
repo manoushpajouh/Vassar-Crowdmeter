@@ -15,4 +15,6 @@ public class Location {
         return "Location name: " + name + "\nCrowd rating: " + crowdRating;
     }
 
+
+
 }
