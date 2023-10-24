@@ -125,13 +125,20 @@ worldClock .right.> userRating
 ```plantuml
 actor User as user
 participant " :User Interface" as ui
+participant " :Controller" as controller
+participant " searchName" as sn
 participant " :Locations"  as locations
-locations -> ui: toString()
+locations -> controller: list of all locations
+controller -> ui: list of all locations
 ui -> user: display location.name for each location
 user -> ui: input desired location name
-ui -> locations: desired location name
-locations -> ui: desiredLocation.toString()
-ui -> user: display location info
+ui -> controller: desired location name
+controller -> sn: searchByName(desired location name)
+sn -> locations: search(desired location name)
+locations -> sn: desired location
+sn -> controller: desired location
+controller -> ui: desired location
+ui -> user: display desired location info 
 @enduml
 ```
 
