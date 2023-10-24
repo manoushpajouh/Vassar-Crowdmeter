@@ -118,8 +118,7 @@ worldClock .right.> userRating
 @enduml
 ```
 
-# Sequence diagrams
-
+# SEQUENCE DIAGRAMS
 ## Browse locations
 
 ```plantuml
