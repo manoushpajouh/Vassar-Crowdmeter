@@ -6,8 +6,7 @@
 ## Name of Application 
 Vassar CrowdMeter 
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Descriptions
 
 This application is meant for users (particularly students at Vassar College) to be able to view specific locations on the campus in terms of how busy they are at a particular moment at their convenience. Users are able to submit ratings for any chosen location (or create their own location if it does not previously exist) in order to keep the busyness ratings as updated as possible. These ratings go from a 1-5 scale (in terms of density: 1 being pretty empty, 5 being super full). Furthermore, users can choose to leave comments with their ratings (which administrators can then filter through in order to prevent spam) 
 
