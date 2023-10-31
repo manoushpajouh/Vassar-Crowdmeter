@@ -34,12 +34,12 @@ public class UI {
        }
 
        //adding a new rating through user input terminal
-       System.out.println("Want to add rating? Input 'Yes' or 'No'");
+       System.out.println("Want to add rating? Type 'Yes' or 'No'");
        String rateOption = s.nextLine();
        if (rateOption.equals("Yes")){ //do not use == bc of memory issues
-           System.out.println("Input your desired rating number:");
+           System.out.println("Input your desired rating from 1 to 5 (whole numbers only)");
            int rateNum = parseInt(s.nextLine());            //convert rateNum from string to integer
-           System.out.println("Do you want to add a comment?");
+           System.out.println("Do you want to add a comment? Type 'Yes' or 'No'");
            String commentOption = s.nextLine();
            if (commentOption.equals("Yes")){
                System.out.println("Please enter your comment:");
