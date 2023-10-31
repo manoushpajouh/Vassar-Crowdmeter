@@ -26,4 +26,8 @@ Low Rank
 * __Manage Location__ 
   * for administrators only 
 * __Change Time Period__
-  * special feature to aggregate crowd reports 
+  * special feature to aggregate crowd reports
+
+## Iteration #3 plan 
+
+For the second phase of elaboration, we would like to add the functionality to add a location and to add ratings for a location. This will also involve averaging all existing ratings for a location into the overall crowd rating field for each location. 
