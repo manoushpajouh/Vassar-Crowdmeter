@@ -29,9 +29,7 @@ The app will also contain a search bar to search a particular location without h
 As of now, the app will be limited as to display a list of all of the already existing locations within the program for the user to click on to add/view a comment or to add a rating. There will be a search bar in order to filter through locations efficiently and to see if the location already exists in order to prevent making a duplicate location.
 
 ## Installation
-How to run the prototype - i.e., identifying the class containing the main() method, and any relevant command line arguments or usage instructions.
-
-In order to run the prototype, one must run the UI class (UI.java file) and from there, instructions on how to proceed will appear. Follow the instructions by typing in examples (for example: when asked for a location, enter "deece") and the prototype will continue to the next step, allowing the user to proceed to the following instruction (whether that be to view a rating or add a location)
+To run the prototype: open the UI class folder (UI.java file) and run the main() method. From there, instructions on how to proceed will appear on the terminal, informing the user what to type in for the next step. Follow the instructions by typing in examples (for example: when asked for a location, enter "deece") and the prototype will continue to the next step, allowing the user to proceed to the following instruction (whether that be to view a rating or add a location)
 
 
 ## Support
