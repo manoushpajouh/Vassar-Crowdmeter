@@ -16,6 +16,11 @@ Features in the application include:
 * Rating scale to input and update the busyness of an area
 * Coordinating color palette to ratings of busyness
 
+Right now the application allows the user to input the location desired to check the rating and then prints out the current status of that location for the user to see. 
+
+
+
+
 
 ## Visuals
 For the final implementation of this application, the app will display a heatmap of Vassar's campus which is color-coordinated and updated regularly in order to accurately reflect the busyness ratings of each location. Users have the ability to pinch to zoom in and out of the map. Users are allowed to click on each location in order to check comments or add their own rating.
@@ -24,15 +29,10 @@ The app will also contain a search bar to search a particular location without h
 As of now, the app will be limited as to display a list of all of the already existing locations within the program for the user to click on to add/view a comment or to add a rating. There will be a search bar in order to filter through locations efficiently and to see if the location already exists in order to prevent making a duplicate location.
 
 ## Installation
-This application runs only for Android, thus must first be downloaded/installed in the Android app store.
-
 How to run the prototype - i.e., identifying the class containing the main() method, and any relevant command line arguments or usage instructions.
 
 In order to run the prototype, one must run the UI class (UI.java file) and from there, instructions on how to proceed will appear. Follow the instructions by typing in examples (for example: when asked for a location, enter "deece") and the prototype will continue to the next step, allowing the user to proceed to the following instruction (whether that be to view a rating or add a location)
 
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
 ## Support
 For help, contact either of the following administrators: 

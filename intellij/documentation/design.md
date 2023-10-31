@@ -34,16 +34,10 @@ minutes
 seconds
 }
 
-class worldClock{
-minutes
-seconds
-}
-
 ' associations 
-userRating "1"  - "1" Location : \t describes \t
+userRating "1..*"  - "1" Location : \t describes \t
 userRating "*" -- "1" ratingTimer : initiates/depends-on \t
 User "1..*" -- "1..*" userRating : creates
-worldClock "1" -right- "1..*" userRating : \t is-saved-by \t
 LocationsOptions "1" -down- "*" Location : contains
 User "1..*" -right- "1" LocationsOptions: \t searches-through\t
 
@@ -89,7 +83,7 @@ getRatingAve(): double
 showComments(): Comment
 }
 
-class ratingTimer{
+class RatingTimer{
 minutes: int
 seconds: int
 --
@@ -98,21 +92,11 @@ updateTimer: String
 timeOver(): bool
 }
 
-class worldClock{
-minutes: int
-seconds: int
---
-getTime(): String
-updateTime(): void
-}
-
-
 User .down.> Rating
 User .> LocationsOptions
 Rating .right.> Location
 LocationsOptions .down.> Location
-Rating .down.> ratingTimer
-worldClock .right.> Rating
+Rating .down.> RatingTimer
 
 @enduml
 ```
@@ -158,14 +142,14 @@ participant " : ratingTimer" as timer
 rater -> ui  : select "Rate A Location"
 ui -> controller : run timeOver()
 controller -> timer : timeOver()
-timer -> controller : return timeOver
+timer -> controller : return timeOver()
 controller -> ratings  : canRate()
 ratings -> controller : return canRate()
 alt canRate()
 
-controller -> locOps :  get locationsList
-locOps -> ui : return locationsList
-ui ->  rater : display locationsList
+controller -> locOps :  Get locationsList
+locOps -> ui : Return locationsList
+ui ->  rater : Display locationsList
 rater -> ui : select a location
 ui -> controller : run locationExists
 controller -> locOps: locationExists
@@ -174,8 +158,7 @@ alt !locationExists()
 locOps -> location : Execute __Add Location__ 
 location -> controller : return location 
 else locationExists()
-locOps  -> location : getLocation()
-location -> controller : return location 
+locOps  -> controller : getLocation()
 end
 
 controller -> ui : Open Textbox for User 
@@ -192,7 +175,6 @@ ui -> rater : Display "Time Until Next Rating"
 
 
 else !canRate()
-controller -> ui : No Rating Made 
 ui -> rater : Display "Timer Not Yet Over"
 end
 
@@ -219,7 +201,7 @@ ui -> controller : display locations
 controller -> locOps :  get locationsList
 locOps -> ui : return locationsList
 ui -> viewer : display locationsList
-viewer -> ui : select location
+viewer -> ui : Select location
 
 alt locationExists() 
 ui -> controller : 
