@@ -13,7 +13,7 @@ class User{
 username
 }
 
-class userRating{
+class Rating{
 number
 color
 comment
@@ -35,9 +35,9 @@ seconds
 }
 
 ' associations 
-userRating "1..*"  - "1" Location : \t describes \t
-userRating "*" -- "1" ratingTimer : initiates/depends-on \t
-User "1..*" -- "1..*" userRating : creates
+Rating "1..*"  - "1" Location : \t describes \t
+Rating "*" -- "1" ratingTimer : initiates/depends-on \t
+User "1..*" -- "1..*" Rating : creates
 LocationsOptions "1" -down- "*" Location : contains
 User "1..*" -right- "1" LocationsOptions: \t searches-through\t
 
@@ -62,12 +62,11 @@ color: String
 comment: String
 --
 canRate(): bool
-assignColor(): String 
 showTime(): String
 }
 
 class LocationsOptions{
-locationsList: Location ArrayList 
+locations: Location ArrayList 
 --
 locationExists(): boolean
 getLocation(): Location
@@ -76,11 +75,13 @@ makeNewLocation(): void
 
 class Location {
 name: String
-allRatings: Int Linked List 
+allRatings: Array List of Ratings 
 commentSection: String Linked List 
 --
+toString(): String
 getRatingAve(): double
-showComments(): Comment
+assignColor(): String 
+showComments(): String
 }
 
 class RatingTimer{
@@ -134,7 +135,6 @@ participant " : Controller" as controller
 participant " : Location" as location 
 participant " : LocationsOptions" as locOps 
 participant " : Rating" as ratings 
-participant " : worldClock" as clock 
 participant " : ratingTimer" as timer 
 
 
@@ -192,10 +192,6 @@ participant " : Controller" as controller
 participant " : Location" as location 
 participant " : LocationsOptions" as locOps 
 participant " : Rating" as ratings 
-participant " : worldClock" as clock 
-participant " : ratingTimer" as timer 
-
-viewer -> ui : 
 
 ui -> controller : display locations 
 controller -> locOps :  get locationsList
