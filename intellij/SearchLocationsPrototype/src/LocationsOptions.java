@@ -5,12 +5,7 @@ import java.util.List;
  */
 public class LocationsOptions {
     List<Location> locations = new ArrayList(){{}}; // this is a list of all locations
-    Location deece = new Location("Deece", 5); // location named "Deece" with a crowd rating of 5
-    Location library = new Location("Library", 2);
-    // at this point, deece and library are automatically added in the constructor
     LocationsOptions(){
-        locations.add(deece);
-        locations.add(library);
     }
 
     /**
@@ -38,5 +33,33 @@ public class LocationsOptions {
             }
         }
         return locExists;
+    }
+}
+
+    /**
+     * The following function will add a newly created location to the list locations
+     * @param name
+     */
+    public void addLocation(String name){
+        Location l = new Location(name, 0);
+        locations.add(l);
+    }
+
+    /**
+     * The following function allows user to search for a location. Returns location if it is already
+     * in the list locations. Otherwise
+     * @param searchInput : location being searched for
+     * @return Location that is found
+     */
+    public Location searchByName(String searchInput) {
+        Location retLocation = null;
+
+        for (int i = 0; i < locations.size(); i++) {
+            if (locations.get(i).name.toLowerCase().contains(searchInput.toLowerCase())) {
+                retLocation = locations.get(i);
+            }
+        }
+
+        return retLocation;
     }
 }
