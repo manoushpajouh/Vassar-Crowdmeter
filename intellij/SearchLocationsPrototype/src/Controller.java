@@ -6,10 +6,10 @@ import java.util.List;
  */
 public class Controller {
     List<Location> locations = new ArrayList<Location>() {{}}; // this list consists of all available locations
+    private Locations ls = new Locations(); // the locations library used in a particular run of the program
 
     // initializes the locations field
     Controller(){
-        Locations ls = new Locations();
         for (Location loc : ls.locations){
             this.locations.add(loc);
         }
@@ -17,7 +17,19 @@ public class Controller {
 
     // calls the search function within searchName class
     public Location searchByName(String searchInput){
-        SearchName sn = new SearchName();
-        return sn.search(searchInput, locations);
+        return ls.searchByName(searchInput);
+    }
+
+    // directs the locations class to add a new location
+    public void addLocation(String newLoc){
+        ls.addLocation(newLoc);
+    }
+
+    public void update(){
+        locations = ls.locations;
+    }
+
+    public List<Location> getLocations(){
+        return locations;
     }
 }
