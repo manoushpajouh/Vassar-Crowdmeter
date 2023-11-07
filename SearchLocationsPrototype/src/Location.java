@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Class that defines a location object with name and crowd rating fields.
  */
 public class Location {
     public String name; // name of location
     int crowdRating; // how busy is it, 1-5?
-    List<Rating> allRatings = new ArrayList<>(){{}};
+
+    List<Rating> allRatings = new ArrayList<>(){{}}; // list of ratings for specific location
 
     public Location(String name, int crowdRating){
         this.name = name;
@@ -27,6 +29,7 @@ public class Location {
     public int getRatingAve(){
         int sizeOfRatings = allRatings.size(); //size of allRatings list
         int counter = 0;     //counter represents the accumulating number from all the ratings added up
+
         for (int i = 0; i < sizeOfRatings; i++) { //iterate through the list of allRatings
             counter = counter + allRatings.get(i).number;
         }

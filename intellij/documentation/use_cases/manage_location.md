@@ -32,23 +32,27 @@ title Manage Location (casual)
 |#application|Admin|
 |#technology|App|
 
+|App|
+:Display button for admin changes;
+|Admin|
+:Select button;
+|App|
+:Display list of all locations;
 
 |Admin|
 :Select location to manage;
 
-if (How to Manage?) then (Edit)
-
-    if (How to Edit?) then (Change Name)
+if (How to Manage?) then (Edit Name)
         :Type in New Name;
-    else (Move Location) 
-        :Click New, Empty Location; 
-    endif    
-      |App|
+        
+     |App|
         :Save New Information;
         :Display New Information;
         stop
+        
+        
 |Admin|
-else (Delete)
+else (Delete Location)
     :Remove Location Button;
 
 |App|
