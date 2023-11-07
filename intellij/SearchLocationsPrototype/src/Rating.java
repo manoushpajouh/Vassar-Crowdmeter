@@ -20,3 +20,4 @@ public class Rating {
         this.comment = comment;
     }
 }
+

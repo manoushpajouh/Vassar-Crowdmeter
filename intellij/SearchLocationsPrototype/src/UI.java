@@ -46,22 +46,15 @@ public class UI {
 
                         System.out.println("Do you want to add a comment? Type 'Yes' or 'No'");
                         String commentOption = s.nextLine();
+
                         if (commentOption.equalsIgnoreCase("Yes")) {
                             System.out.println("Please enter your comment:");
                             String cm = s.nextLine();
-                            Rating rating = new Rating(rateNum, cm);
-                            //add rating to the list so that the counter will still work
-                            foundLoc.allRatings.add(rating);
-                            System.out.println("Adding Your Rating of " + rating.number + " to " + foundLoc.name);
-                            System.out.println("New Overall Rating of " + foundLoc.crowdRating + " at " + foundLoc.name);
+                            foundLoc.addCommentRating(rateNum, cm)
                         }
                         //dont want comment
                         else {
-                            Rating rating = new Rating(rateNum);
-                            //add rating to the list so that the counter will still work
-                            foundLoc.allRatings.add(rating);
-                            System.out.println("Adding Your Rating of " + rating.number + " to " + foundLoc.name);
-                            System.out.println("New Overall Rating of " + foundLoc.getRatingAve() + " at " + foundLoc.name);
+                            foundLoc.addRating(rateNum);
                         }
                     }
                     else {
