@@ -79,7 +79,7 @@ public class UI {
                     System.out.println("Success! Thank you for adding " + newLoc + ".");
 
                 } else {
-                    System.out.println("Please type either 'add', 'search', or rate.");
+                    System.out.println("Please type either 'add' or 'search'.");
                 }
             }
         }
