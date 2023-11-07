@@ -35,10 +35,9 @@ title Check Busyness (fully dressed)
 
 |App|
 while (Is viewing student done checking?) is (no)
-:Displays locations;
 
 |Viewing student|
-:Selects desired location;
+:__Execute Search Location__;
 
 |App|
 if (Is data available?) is (Yes) then
@@ -51,11 +50,11 @@ endif
 :Views the overall crowd rating;
 while (Does student want to change time period for crowd rating?) is (yes)
 |App|
-:Execute __change_time_period__;
+:Execute __Change_Time_Period__;
 endwhile (no)
 |Viewing student|
 if (Does student want to report?) is (yes) then
-:Execute __report busyness__;
+:Execute __Report Busyness__;
 else (no)
 endif
 endwhile (yes)
