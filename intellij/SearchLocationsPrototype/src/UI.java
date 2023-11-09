@@ -10,7 +10,7 @@ public class UI {
         Controller c = new Controller(); // accesses the controller class
 
         while (true) {
-            System.out.println("What would you like to do? Type 'add' if you would like to add as new location, or 'search' if you would like to browse existing locations.");
+            System.out.println("What would you like to do? Type 'add' if you would like to add a new location, or 'search' if you would like to browse existing locations.");
             Scanner s = new Scanner(System.in);
             String useCase = s.nextLine();
 
@@ -46,6 +46,7 @@ public class UI {
 
                         System.out.println("Do you want to add a comment? Type 'Yes' or 'No'");
                         String commentOption = s.nextLine();
+                        
                         if (commentOption.equalsIgnoreCase("Yes")) {
                             System.out.println("Please enter your comment:");
                             String cm = s.nextLine();

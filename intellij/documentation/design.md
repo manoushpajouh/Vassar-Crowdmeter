@@ -61,16 +61,14 @@ number: int
 color: String
 comment: String
 --
-canRate(): bool
-showTime(): String
 }
 
 class LocationsOptions{
 locations: Location ArrayList 
 --
 locationExists(): boolean
-getLocation(): Location
-makeNewLocation(): void
+addLocation(): void
+searchByName(): Location
 }
 
 class Location {
@@ -79,25 +77,17 @@ allRatings: Array List of Ratings
 commentSection: String Linked List 
 --
 toString(): String
+addRating(): void
 getRatingAve(): double
 assignColor(): String 
 showComments(): String
 }
 
-class RatingTimer{
-minutes: int
-seconds: int
---
-getTime(): String 
-updateTimer: String
-timeOver(): bool
-}
 
 User .down.> Rating
 User .> LocationsOptions
 Rating .right.> Location
 LocationsOptions .down.> Location
-Rating .down.> RatingTimer
 
 @enduml
 ```
