@@ -6,7 +6,7 @@ import java.util.List;
  */
 public class Controller {
     List<Location> locations = new ArrayList<Location>() {{}}; // this list consists of all available locations
-    private Locations ls = new Locations(); // the locations library used in a particular run of the program
+    private LocationsOptions ls = new LocationsOptions(); // the locations library used in a particular run of the program
 
     // initializes the locations field
     Controller(){

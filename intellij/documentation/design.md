@@ -183,14 +183,14 @@ participant " : Location" as location
 participant " : LocationsOptions" as locOps 
 participant " : Rating" as ratings 
 
-ui -> controller : display locations 
-controller -> locOps :  get locationsList
-locOps -> ui : return locationsList
-ui -> viewer : display locationsList
-viewer -> ui : Select location
+ui -> controller : locationsOptions.toString()
+controller -> locOps :  toString();
+ui -> viewer : display locationsOptions.toString()
+
+viewer -> ui : Enter location
 
 alt locationExists() 
-ui -> controller : 
+ui -> controller :
 controller -> location: getRatingAve()
 location -> controller : return getRatingAve()
 controller -> ui : display getRatingAve()
@@ -210,3 +210,23 @@ else !locationExists()
 ui -> controller: execute __Add Location__
 
 end
+@enduml
+```
+
+# Add Location Sequence Diagram
+
+```plantuml
+@startuml
+actor Viewer as viewer 
+participant " : User Interface" as ui
+participant " : Controller" as controller
+participant " : Location" as location 
+participant " : LocationsOptions" as locOps 
+participant " : Rating" as ratings 
+
+viewer -> ui : Enter Name for Location 
+viewer -> ui : __Execute Report Busyness__
+
+
+@enduml
+```
