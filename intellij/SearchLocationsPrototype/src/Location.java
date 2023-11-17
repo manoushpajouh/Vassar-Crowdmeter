@@ -37,6 +37,38 @@ public class Location {
         return crowdRating;
     }
 
+    public void addRating(int ratingNumber) {
+        Rating rating = new Rating(rateNum);
+        //add rating to the list so that the counter will still work
+        allRatings.add(rating);
+        System.out.println("Adding Your Rating of " + rating.number + " to " + name);
+        System.out.println("New Overall Rating of " + foundLoc.crowdRating + " at " + name);
+
+    }
+
+    public void addCommentRating(int rateNum, String newComment){
+        Rating rating = new Rating(rateNum, cm);
+        //add rating to the list so that the counter will still work
+        foundLoc.allRatings.add(rating);
+        System.out.println("Adding Your Rating of " + rating.number + " to " + name);
+        System.out.println("New Overall Rating of " + foundLoc.crowdRating + " at " + name);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Function will return the string for whatever color the average rating should be
      */
@@ -66,4 +98,7 @@ public class Location {
         }
         return color;
     }
+
+
+
 }
