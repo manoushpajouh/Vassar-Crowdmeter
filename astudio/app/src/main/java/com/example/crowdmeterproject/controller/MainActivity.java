@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.example.crowdmeterproject.view.AddFragment;
 import com.example.crowdmeterproject.model.Location;
 import com.example.crowdmeterproject.model.LocationsLibrary;
+import com.example.crowdmeterproject.view.AddRatingFragment;
 import com.example.crowdmeterproject.view.IAddView;
 import com.example.crowdmeterproject.view.IMainView;
 import com.example.crowdmeterproject.view.ISearchView;
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements ISearchView.Liste
         else {
             view.displaySearchResult(searchResult);
         }
+    }
+
+    @Override
+    public void onAddRatingPress(ISearchView view) {
+        mainView.displayFragment(new AddRatingFragment(this), false, "addRatingFragment");
     }
 
     @Override

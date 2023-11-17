@@ -60,8 +60,16 @@ public class SearchFragment extends Fragment implements ISearchView {
         if(addRatingButton == null){
             addRatingButton = new Button(this.binding.getRoot().getContext());
             addRatingButton.setText(R.string.add_rating_button_label);
-
             this.binding.resultsDisplay.addView(addRatingButton);
+
+            this.binding.addRatingButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v){
+                    // notify the listener
+                    SearchFragment.this.listener.onAddRatingPress(SearchFragment.this);
+                }
+            }
+            );
+
         } else {
             this.binding.resultsDisplay.removeView(addRatingButton);
             this.binding.resultsDisplay.addView(addRatingButton);

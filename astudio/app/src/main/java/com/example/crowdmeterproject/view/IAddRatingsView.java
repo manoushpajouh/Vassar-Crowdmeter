@@ -1,4 +1,4 @@
-package com.example.vassarcrowdmeterapp.view;
+package com.example.crowdmeterproject.view;
 
 import com.example.vassarcrowdmeterapp.model.Rating;
 
