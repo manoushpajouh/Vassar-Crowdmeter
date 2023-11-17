@@ -31,3 +31,7 @@ Low Rank
 ## Iteration #3 plan 
 
 For the second phase of elaboration, we would like to add the functionality to add a location and to add ratings for a location. This will also involve averaging all existing ratings for a location into the overall crowd rating field for each location. 
+
+## Iteration #4 plan 
+For the next phase of elaboration, we would like to add more design elements (fonts, colors, maybe graphics). 
+Furthermore, we would like to incorporate an administrator's view of the app which allows you to delete locations and comments.
