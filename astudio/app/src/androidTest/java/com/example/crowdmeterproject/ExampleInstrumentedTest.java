@@ -1,4 +1,4 @@
-package com.example.vassarcrowdmeterapp;
+package com.example.crowdmeterproject;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.vassarcrowdmeterapp", appContext.getPackageName());
+        assertEquals("com.example.crowdmeterproject", appContext.getPackageName());
     }
 }

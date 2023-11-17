@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Class that contains a list of all avaiable locations.
+ * Class that contains a list of all available locations.
  */
 public class LocationsOptions {
     List<Location> locations = new ArrayList(){{}}; // this is a list of all locations
@@ -34,7 +34,7 @@ public class LocationsOptions {
         }
         return locExists;
     }
-}
+
 
     /**
      * The following function will add a newly created location to the list locations
