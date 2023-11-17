@@ -10,33 +10,25 @@ hide circle
 ' classes 
 
 class User{
-username
 }
 
 class Rating{
 number
-color
 comment
 }
 
 class LocationsOptions{
-locations
+locations list
 }
 
 class Location{
 name
-rating
-commentSection
-}
-
-class ratingTimer{
-minutes
-seconds
+crowdRating
+allRatings
 }
 
 ' associations 
 Rating "1..*"  - "1" Location : \t describes \t
-Rating "*" -- "1" ratingTimer : initiates/depends-on \t
 User "1..*" -- "1..*" Rating : creates
 LocationsOptions "1" -down- "*" Location : contains
 User "1..*" -right- "1" LocationsOptions: \t searches-through\t
@@ -51,36 +43,38 @@ User "1..*" -right- "1" LocationsOptions: \t searches-through\t
 @startuml
 
 class User{
-username: String
---
-getUser(): String
 }
 
 class Rating{
 number: int
-color: String
 comment: String
 --
+Rating(int number)
+Rating(int number, String comment)
+--
+toString(): String 
+
 }
 
 class LocationsOptions{
 locations: Location ArrayList 
 --
 locationExists(): boolean
+toString(): String
 addLocation(): void
 searchByName(): Location
 }
 
 class Location {
 name: String
+crowdRating: double
 allRatings: Array List of Ratings 
-commentSection: String Linked List 
 --
 toString(): String
 addRating(): void
+addCommentRating(): void
 getRatingAve(): double
 assignColor(): String 
-showComments(): String
 }
 
 
@@ -89,6 +83,13 @@ User .> LocationsOptions
 Rating .right.> Location
 LocationsOptions .down.> Location
 
+' associations 
+Rating "1..*"  - "1" Location : \t describes \t
+User "1..*" -- "1..*" Rating : creates
+LocationsOptions "1" -down- "*" Location : contains
+User "1..*" -right- "1" LocationsOptions: \t searches-through\t
+
+
 @enduml
 ```
 
@@ -96,6 +97,7 @@ LocationsOptions .down.> Location
 ## Browse locations
 
 ```plantuml
+@startuml
 actor User as user
 participant " :User Interface" as ui
 participant " :Controller" as controller
@@ -115,7 +117,7 @@ ui -> user: display desired location info
 @enduml
 ```
 
-# Report Busyness Sequence Diagram 
+# Report Busyness Sequence Diagram : Goal Diagram 
 
 ```plantuml
 @startuml
@@ -126,8 +128,6 @@ participant " : Location" as location
 participant " : LocationsOptions" as locOps 
 participant " : Rating" as ratings 
 participant " : ratingTimer" as timer 
-
-
 
 rater -> ui  : select "Rate A Location"
 ui -> controller : run timeOver()
@@ -157,18 +157,45 @@ rater -> ui : Enter Rating Requirements
 ui -> controller : Input into makeRating
 controller -> ratings : makeRating(number: int, color: String, comment: String)
 
-
 ratings -> timer : updateTime();
 timer -> controller : return getTime()
 controller -> ui : display getTime()
 ui -> rater : Display "Time Until Next Rating"
 
-
 else !canRate()
 ui -> rater : Display "Timer Not Yet Over"
 end
 
+@enduml
+```
 
+# Current Version of Report Busyness
+
+```plantuml
+@startuml
+actor Rater as rater 
+
+participant " : User Interface" as ui
+participant " : Controller" as controller
+participant " : Location" as location 
+participant " : LocationsOptions" as locOps 
+participant " : Rating" as ratings 
+
+controller -> locOps : Execute __Check Busyness__
+    alt !locationExists()
+        locOps -> location : Execute __Add Location__ 
+    else locationExists()
+        locOps  -> controller : getLocation()
+    end
+   
+controller -> ui : Open Text box for User
+ui -> rater : Display Text box to Rate
+rater -> ui : Enter Rating Requirements
+ui -> controller : location.addRating()
+controller -> ratings : addCommentRating(number: int, comment: String)
+controller -> ratings : addRating(number: int)
+
+end
 @enduml
 ```
 
@@ -189,27 +216,25 @@ ui -> viewer : display locationsOptions.toString()
 
 viewer -> ui : Enter location
 
-alt locationExists() 
-ui -> controller :
-controller -> location: getRatingAve()
-location -> controller : return getRatingAve()
-controller -> ui : display getRatingAve()
-ui -> viewer : display "Want To Add Rating?" and "Yes" "No" options
-    alt yes
-    viewer -> ui : Choose "Yes"
-    ui -> controller : Execute __Report Busyness__
+    alt locationExists() 
+    controller -> location: getRatingAve()
+    location -> controller : return getRatingAve()
+    controller -> ui : display getRatingAve()
+    ui -> viewer : display "Want To Add Rating?" and "Yes" "No" options
+        alt yes
+        viewer -> ui : Choose "Yes"
+        ui -> controller : Execute __Report Busyness__
+        
+        else no 
+        viewer -> ui : Choose "No" 
+        ui -> controller : Close  
+        end
     
-    else no 
-    viewer -> ui : Choose "No" 
-    ui -> controller : Close  
-    end
-
-
-
-else !locationExists()
-ui -> controller: execute __Add Location__
+    else !locationExists()
+    ui -> controller: execute __Add Location__
 
 end
+
 @enduml
 ```
 
@@ -225,7 +250,8 @@ participant " : LocationsOptions" as locOps
 participant " : Rating" as ratings 
 
 viewer -> ui : Enter Name for Location 
-viewer -> ui : __Execute Report Busyness__
+ui -> controller : locOps.toString()
+controller -> locOps : addLocation();
 
 
 @enduml
