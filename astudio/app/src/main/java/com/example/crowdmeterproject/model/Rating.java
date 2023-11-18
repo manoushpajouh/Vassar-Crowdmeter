@@ -22,12 +22,11 @@ public class Rating {
         this.comment = comment;
     }
 
-    public String toString(){
+    public String toString() {
         String retString = "Rating of " + this.number;
-        if (comment != null){
+        if (comment != null) {
             retString += ", Comment of '" + comment + "'";
         }
         return retString;
     }
-
 }

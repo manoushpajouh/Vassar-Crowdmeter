@@ -58,11 +58,6 @@ public class AddFragment extends Fragment implements IAddView {
                     Snackbar.make(v, String.format("Successfully added %s with crowd rating of %d", locationName, crowdRating), Snackbar.LENGTH_LONG).show();
 
                 }
-
-
-
-
-
             }
         }
         );

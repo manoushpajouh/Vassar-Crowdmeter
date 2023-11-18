@@ -1,8 +1,12 @@
 package com.example.crowdmeterproject;
 
+<<<<<<< HEAD
 import com.example.crowdmeterproject.model.Rating;
 
+=======
+>>>>>>> 24d90037f361432adff84e8a89194e67ccbd1415
 import junit.framework.TestCase;
+import com.example.crowdmeterproject.model.Rating;
 
 public class RatingTest extends TestCase {
 

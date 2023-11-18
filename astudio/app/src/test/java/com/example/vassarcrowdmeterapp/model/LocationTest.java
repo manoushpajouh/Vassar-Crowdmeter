@@ -5,6 +5,9 @@ import junit.framework.TestCase;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.crowdmeterproject.model.Location;
+import com.example.crowdmeterproject.model.Rating;
+
 public class LocationTest extends TestCase {
 
     public void testTestToString() {
