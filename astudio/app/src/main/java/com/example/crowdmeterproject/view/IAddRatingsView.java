@@ -1,12 +1,10 @@
 package com.example.crowdmeterproject.view;
 
-import com.example.vassarcrowdmeterapp.model.Rating;
+import com.example.crowdmeterproject.model.Rating;
 
 /**
  *  Define the methods necessary to add Rating to a Location
  */
-
-
 public interface IAddRatingsView {
 
     /**

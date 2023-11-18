@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.crowdmeterproject.controller.MainActivity;
 import com.example.crowdmeterproject.databinding.MainBinding;
 import com.google.android.material.snackbar.Snackbar;
 

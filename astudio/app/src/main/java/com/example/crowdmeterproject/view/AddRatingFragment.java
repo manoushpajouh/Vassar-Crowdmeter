@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.vassarcrowdmeterapp.databinding.AddRatingFragmentBinding;
+import com.example.crowdmeterproject.databinding.AddRatingFragmentBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import com.example.vassarcrowdmeterapp.model.Rating;
-
-import com.example.vassarcrowdmeterapp.R;
+import com.example.crowdmeterproject.model.Rating;
+import com.example.crowdmeterproject.R;
 
 
 

@@ -1,20 +1,21 @@
 package com.example.crowdmeterproject.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.example.crowdmeterproject.view.AddFragment;
 import com.example.crowdmeterproject.model.Location;
 import com.example.crowdmeterproject.model.LocationsLibrary;
 import com.example.crowdmeterproject.view.AddRatingFragment;
+import com.example.crowdmeterproject.view.IAddRatingsView;
 import com.example.crowdmeterproject.view.IAddView;
 import com.example.crowdmeterproject.view.IMainView;
 import com.example.crowdmeterproject.view.ISearchView;
 import com.example.crowdmeterproject.view.MainView;
 import com.example.crowdmeterproject.view.SearchFragment;
 
-public class MainActivity extends AppCompatActivity implements ISearchView.Listener, IMainView.Listener, IAddView.Listener {
+public class MainActivity extends AppCompatActivity implements
+        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener {
     LocationsLibrary locationsLibrary = new LocationsLibrary();
     IMainView mainView;
 
@@ -65,5 +66,10 @@ public class MainActivity extends AppCompatActivity implements ISearchView.Liste
         locationsLibrary.addLocation(locationName, crowdRating);
     }
 
+    @Override
+    public void completedRatings() {
+
+    }
+}
 
 }

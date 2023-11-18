@@ -1,6 +1,4 @@
-package com.example.vassarcrowdmeterapp.model;
-
-import androidx.annotation.NonNull;
+package com.example.crowdmeterproject.model;
 
 public class Rating {
     public int number;
@@ -23,7 +21,7 @@ public class Rating {
         this.number = number;
         this.comment = comment;
     }
-    @NonNull
+
     public String toString(){
         String retString = "Rating of " + this.number;
         if (comment != null){
