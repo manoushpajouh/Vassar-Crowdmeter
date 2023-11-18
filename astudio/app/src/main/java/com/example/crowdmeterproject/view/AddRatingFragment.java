@@ -80,6 +80,9 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
 
                 }
 
+                // inform user that rating was successfully added
+                Snackbar.make(v, String.format("Sucessfully added rating of %d to location", ratingNumber), Snackbar.LENGTH_LONG).show();
+
                 // clear the input fields to ready them for the next item
                 commentEnteredEditable.clear();
                 ratingNumberEditable.clear();

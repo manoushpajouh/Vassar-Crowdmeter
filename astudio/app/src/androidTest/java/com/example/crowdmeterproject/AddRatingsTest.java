@@ -21,7 +21,7 @@ import com.example.crowdmeterproject.controller.MainActivity;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class AddRatingsInstrumentedTest {
+public class AddRatingsTest {
 
     // specify what activity to launch for test (it will be launched afresh everytime a test is run
     @org.junit.Rule

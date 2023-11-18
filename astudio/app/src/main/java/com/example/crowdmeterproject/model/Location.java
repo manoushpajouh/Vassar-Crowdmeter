@@ -1,6 +1,5 @@
 package com.example.crowdmeterproject.model;
 
-import com.example.vassarcrowdmeterapp.model.Rating;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,22 +44,18 @@ public class Location {
         return crowdRating;
     }
 
+    public void updateRatingAve(){
+        this.crowdRating = this.getRatingAve();
+    }
+
     public void addRating(int ratingNumber) {
         Rating rating = new Rating(ratingNumber);
-        System.out.println("Adding Your Rating of " + ratingNumber + " to " + name);
-        //add rating to the list so that the counter will still work
         allRatings.add(rating);
-        System.out.println("New Overall Rating of " + getRatingAve() + " at " + name);
-
     }
 
     public void addCommentRating(int rateNum, String newComment){
         Rating rating = new Rating(rateNum, newComment);
-        //add rating to the list so that the counter will still work
         allRatings.add(rating);
-        System.out.println("Adding Your Rating of " + rating.number + " to " + name);
-        System.out.println("New Overall Rating of " + crowdRating + " at " + name);
-
     }
 
     /**

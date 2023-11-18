@@ -26,7 +26,7 @@ public class LocationsLibrary {
     /**
      * Function checks whether or not the location already exists within the locations list
      */
-    public boolean locationExists(com.example.vassarcrowdmeterapp.model.Location location) {
+    public boolean locationExists(com.example.crowdmeterproject.model.Location location) {
         boolean locExists = false;
         //for each index in the array list
         for (int i = 0; i < locations.size(); i++) {

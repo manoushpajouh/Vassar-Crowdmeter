@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements
     LocationsLibrary locationsLibrary = new LocationsLibrary();
     IMainView mainView;
 
+    Location searchResult; // a location that has been successfully searched for by the user
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onSearched(String searchInput, ISearchView view) {
-        Location searchResult = locationsLibrary.searchByName(searchInput);
+        searchResult = locationsLibrary.searchByName(searchInput);
 
         if (searchResult == null){
             view.displaySearchFailure();
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onAddRatingPress(ISearchView view) {
         mainView.displayFragment(new AddRatingFragment(this), false, "addRatingFragment");
+
+        setContentView(mainView.getRootView());
     }
 
     @Override
@@ -67,9 +71,19 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void completedRatings() {
+    public void addCommentRatingToLoc(String comment, int number, IAddRatingsView view) {
+        searchResult.addCommentRating(number, comment);
+        searchResult.updateRatingAve();
+    }
 
+    @Override
+    public void addRatingToLoc(int number, IAddRatingsView view) {
+        searchResult.addRating(number);
+        searchResult.updateRatingAve();
+    }
+
+    @Override
+    public void completedRatings() {
     }
 }
 
-}
