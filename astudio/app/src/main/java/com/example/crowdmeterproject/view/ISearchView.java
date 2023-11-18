@@ -8,6 +8,7 @@ public interface ISearchView {
 
     public interface Listener {
         void onSearched(String searchInput, ISearchView view);
+        void onAddRatingPress(ISearchView view);
     }
 
     public void displaySearchResult(Location searchResult);

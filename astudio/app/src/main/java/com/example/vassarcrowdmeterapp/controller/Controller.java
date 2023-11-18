@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 //import com.example.vassarcrowdmeterapp.view.MainView;
-//import com.example.vassarcrowdmeterapp.view.IAddRatingsView;
-//import com.example.vassarcrowdmeterapp.view.AddRatingFragment;
+//import com.example.crowdmeterproject.view.IAddRatingsView;
+//import com.example.crowdmeterproject.view.AddRatingFragment;
 //import com.example.vassarcrowdmeterapp.view.IMainView;
 import com.example.vassarcrowdmeterapp.R;
-import com.example.vassarcrowdmeterapp.view.AddRatingFragment;
-import com.example.vassarcrowdmeterapp.view.IAddRatingsView;
+import com.example.crowdmeterproject.view.AddRatingFragment;
+import com.example.crowdmeterproject.view.IAddRatingsView;
 
 public class Controller extends AppCompatActivity implements IAddRatingsView.Listener {
 

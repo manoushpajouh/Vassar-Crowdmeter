@@ -1,4 +1,4 @@
-package com.example.vassarcrowdmeterapp.view;
+package com.example.crowdmeterproject.view;
 
 import android.os.Bundle;
 
@@ -26,9 +26,9 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
 
     AddRatingFragmentBinding binding; // will call the widgets (xml)
     Listener listener; // like the controller --> will recognize when button is clicked etc
-    public AddRatingFragment(@NonNull IAddRatingsView listener)
+    public AddRatingFragment(@NonNull Listener listener)
     {
-        this.listener = (Listener) listener;
+        this.listener = listener;
     }
 
     @Override

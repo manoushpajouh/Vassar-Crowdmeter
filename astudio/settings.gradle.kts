@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "VassarCrowdMeterApp"
+rootProject.name = "CrowdMeterProject"
 include(":app")
- 
