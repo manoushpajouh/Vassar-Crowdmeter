@@ -30,5 +30,4 @@ public class Rating {
         return retString;
     }
 
-
 }

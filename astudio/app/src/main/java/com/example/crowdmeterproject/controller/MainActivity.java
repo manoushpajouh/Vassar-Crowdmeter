@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onAdded(int crowdRating, String locationName, IAddView view){
-        locationsLibrary.addLocation(locationName, crowdRating);
+        locationsLibrary.addLocation(locationName, crowdRating).addRating(crowdRating);
     }
 
     @Override

@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78316777-9d71-45e9-b5f4-a5bdedac628e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/src/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/src/Location.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/src/Locations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/src/Rating.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/src/SearchName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SearchLocationsPrototype/src/UI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/androidTest/java/com/example/crowdmeterproject/AddRatingsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/androidTest/java/com/example/crowdmeterproject/AddRatingsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/controller/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/controller/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/model/LocationsLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/model/LocationsLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/model/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/model/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/view/AddFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/view/AddFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/view/AddRatingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/view/AddRatingFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/view/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/java/com/example/crowdmeterproject/view/SearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/res/layout/add_rating_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/res/layout/add_rating_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/res/layout/fragment_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/res/layout/fragment_add.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../astudio/app/src/test/java/com/example/crowdmeterproject/RatingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../astudio/app/src/test/java/com/example/crowdmeterproject/RatingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/design.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/design.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/home/zwatson/Desktop/cs203/team-2f/intellij/SearchLocationsPrototype",
@@ -74,6 +79,7 @@
       <workItem from="1696971840498" duration="226000" />
       <workItem from="1698173713899" duration="2399000" />
       <workItem from="1698780020632" duration="31000" />
+      <workItem from="1700337601558" duration="414000" />
     </task>
     <servers />
   </component>

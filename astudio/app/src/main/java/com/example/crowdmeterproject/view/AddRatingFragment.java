@@ -1,5 +1,6 @@
 package com.example.crowdmeterproject.view;
 
+import android.accessibilityservice.AccessibilityService;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,7 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // register add button click listener so you know when you press the button - made interactive
-        this.binding.addRatingButton.setOnClickListener(new View.OnClickListener() {
+        this.binding.addRatingToLocButton.setOnClickListener(new View.OnClickListener() {
 
             /**
              * Called when associated button is clicked.
@@ -81,7 +82,7 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
                 }
 
                 // inform user that rating was successfully added
-                Snackbar.make(v, String.format("Sucessfully added rating of %d to location", ratingNumber), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, String.format("Successfully added rating of %d to location", ratingNumber), Snackbar.LENGTH_LONG).show();
 
                 // clear the input fields to ready them for the next item
                 commentEnteredEditable.clear();
@@ -97,27 +98,9 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
     @Override
     public void updateRatingDisplay(Rating rating) {
         this.binding.ratingNumberEntered.setText(rating.toString());
-
-        // add done button if the rating is a whole number 1-5
-        if (rating.number >= 1 && rating.number <= 5) addDoneButton();
     }
 
 
-    /**
-     * Add a "done" button to the user interface.
-     */
-    private void addDoneButton() {
-        Button doneButton = new MaterialButton(this.binding.getRoot().getContext());
-        doneButton.setText(R.string.done_button_label);
-        //add listener so it knows when button has been pressed
-        doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddRatingFragment.this.listener.completedRatings();
-            }
-        });
-        this.binding.rowButtons.addView(doneButton);
-    }
 }
 
 

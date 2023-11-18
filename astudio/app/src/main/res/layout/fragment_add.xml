@@ -64,7 +64,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/addLocButton"
         android:layout_width="132dp"
         android:layout_height="57dp"
         android:text="Add"
