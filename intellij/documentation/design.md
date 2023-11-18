@@ -195,7 +195,6 @@ ui -> controller : location.addRating()
 controller -> ratings : addCommentRating(number: int, comment: String)
 controller -> ratings : addRating(number: int)
 
-end
 @enduml
 ```
 
