@@ -1,5 +1,5 @@
 package com.example.vassarcrowdmeterapp.model;
-import com.example.vassarcrowdmeterapp.model.Rating;
+import com.example.crowdmeterproject.model.Rating;
 
 import junit.framework.TestCase;
 

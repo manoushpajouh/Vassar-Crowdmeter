@@ -1,8 +1,7 @@
 package com.example.crowdmeterproject;
 
-import com.example.vassarcrowdmeterapp.model.Rating;
-
 import junit.framework.TestCase;
+import com.example.crowdmeterproject.model.Rating;
 
 public class RatingTest extends TestCase {
 

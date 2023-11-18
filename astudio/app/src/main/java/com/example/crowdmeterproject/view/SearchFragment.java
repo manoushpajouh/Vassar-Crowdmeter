@@ -40,7 +40,7 @@ public class SearchFragment extends Fragment implements ISearchView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.binding.searchButton.setOnClickListener(new View.OnClickListener() {
+        this.binding.searchLocsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 Editable searchBarEditable = binding.searchBar.getText();
                 String searchInput = searchBarEditable.toString();

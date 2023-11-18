@@ -36,7 +36,7 @@ public class AddFragment extends Fragment implements IAddView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.binding.addButton.setOnClickListener(new View.OnClickListener() {
+        this.binding.addLocButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 Editable locationNameEditable = binding.locationName.getText();
                 String locationName = locationNameEditable.toString();
@@ -57,11 +57,6 @@ public class AddFragment extends Fragment implements IAddView {
                     // notify the user
                     Snackbar.make(v, String.format("Successfully added %s with crowd rating of %d", locationName, crowdRating), Snackbar.LENGTH_LONG).show();
                 }
-
-
-
-
-
             }
         }
         );
