@@ -12,6 +12,8 @@ public class Location {
     double crowdRating; // how busy is it, 1-5?
     public List<Rating> allRatings = new ArrayList<>(); // list of ratings for specific location
 
+    public List<String> allComments = new ArrayList<>(); //list of all comments for a specific location
+
 
     public Location(String name, double crowdRating){
         this.name = name;
@@ -56,6 +58,7 @@ public class Location {
     public void addCommentRating(int rateNum, String newComment){
         Rating rating = new Rating(rateNum, newComment);
         allRatings.add(rating);
+        allComments.add(newComment);
     }
 
     /**
@@ -87,6 +90,22 @@ public class Location {
         }
         return color;
     }
+
+    /**
+     * Function goes through every comment in the location and returns them all
+     * @return string with every comment for the location
+     */
+    //useless for showcomments fragment because it needs to go through a list
+    public String showComments(){
+        String retString = "";
+        //for each comment that has been made for the location
+        for (int i = 0; i < allComments.size(); i++){
+            //print it
+           retString = retString + (allComments.get(i));
+        }
+        return retString;
+    }
+
 
 
 }

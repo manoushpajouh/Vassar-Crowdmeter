@@ -3,6 +3,8 @@
     <string name="search">Search</string>
     <string name="add">Add</string>
     <string name="add_rating_button_label">Add Rating</string>
+    <string name="location_comment_screen_label">Location: </string>
+
     <!-- general purpose -->
     <string name="app_name">Vassar CrowdMeter</string>
     <!-- for add items screen -->

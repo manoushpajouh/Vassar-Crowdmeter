@@ -30,8 +30,6 @@ public interface IAddRatingsView {
         void addRatingToLoc(int number, IAddRatingsView view);
 
         /**
-         *
-         *
          * Called when the user is done adding rating.
          */
         void completedRatings();
