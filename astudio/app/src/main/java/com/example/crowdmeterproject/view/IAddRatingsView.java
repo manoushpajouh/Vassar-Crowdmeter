@@ -36,11 +36,4 @@ public interface IAddRatingsView {
          */
         void completedRatings();
     }
-
-    /**
-     * Update display to reflect contents of the rating passed as an argument.
-     * @param rating is the rating going to be displayed
-     *        the rating most recently added
-     */
-    void updateRatingDisplay(Rating rating);
 }

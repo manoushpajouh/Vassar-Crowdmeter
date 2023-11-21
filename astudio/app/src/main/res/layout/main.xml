@@ -7,14 +7,13 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/useCaseFragment"
-        android:layout_width="368dp"
-        android:layout_height="590dp"
+        android:layout_width="410dp"
+        android:layout_height="579dp"
         android:layout_marginTop="9dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/useCaseButtons"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleDisplay" />
 
