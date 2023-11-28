@@ -45,15 +45,15 @@ public class LocationsLibrary {
         return l;
     }
 
-    public Location searchByName(String searchInput) {
-        Location retLocation = null;
+    public List<Location> searchByName(String searchInput) {
+        List<Location> retLocations = new ArrayList<>();
 
         for (int i = 0; i < locations.size(); i++) {
             if (locations.get(i).name.toLowerCase().contains(searchInput.toLowerCase())) {
-                retLocation = locations.get(i);
+                retLocations.add(locations.get(i));
             }
         }
-        return retLocation;
+        return retLocations;
     }
 
     public List<Location> getLocations(){

@@ -35,22 +35,14 @@
 
     <LinearLayout
         android:id="@+id/resultsDisplay"
-        android:layout_width="208dp"
-        android:layout_height="315dp"
+        android:layout_width="352dp"
+        android:layout_height="304dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchLocsButton"
-        app:layout_constraintVertical_bias="0.456">
-
-        <TextView
-            android:id="@+id/resultText"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:text="No results yet!"
-            android:textSize="20sp" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.456" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

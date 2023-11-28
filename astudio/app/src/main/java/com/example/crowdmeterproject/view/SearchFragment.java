@@ -1,6 +1,5 @@
 package com.example.crowdmeterproject.view;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,16 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.crowdmeterproject.R;
 import com.example.crowdmeterproject.databinding.FragmentSearchBinding;
 import com.example.crowdmeterproject.model.Location;
-import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 public class SearchFragment extends Fragment implements ISearchView {
     FragmentSearchBinding binding;
     Listener listener;
-    Button addRatingButton;
 
     public SearchFragment(@NonNull Listener listener){
         this.listener = listener;
@@ -30,7 +31,6 @@ public class SearchFragment extends Fragment implements ISearchView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         this.binding = FragmentSearchBinding.inflate(inflater);
         // Inflate the layout for this fragment
         return this.binding.getRoot();
@@ -51,34 +51,46 @@ public class SearchFragment extends Fragment implements ISearchView {
             }
         }
         );
+
+        displaySearchResults(this.listener.getAllLocations());
     }
 
     @Override
-    public void displaySearchResult(Location searchResult) {
-        this.binding.resultText.setText(searchResult.toString());
+    public void displaySearchResults(List<Location> searchResults) {
 
-        if(addRatingButton == null){
-            addRatingButton = new Button(this.binding.getRoot().getContext());
+        // clear out the existing results display to make way for new locations
+        while(this.binding.resultsDisplay.getChildCount() > 0){
+            View nextChild = (this.binding.resultsDisplay).getChildAt(0);
+            this.binding.resultsDisplay.removeView(nextChild);
+        }
+
+        for (Location location : searchResults){
+            LinearLayout locationLayout = new LinearLayout(this.binding.getRoot().getContext());
+            locationLayout.setOrientation(LinearLayout.HORIZONTAL);
+            this.binding.resultsDisplay.addView(locationLayout);
+
+            TextView locationNameText = new TextView(this.binding.getRoot().getContext());
+            locationNameText.setText(location.toString());
+            locationLayout.addView(locationNameText);
+
+            Button addRatingButton = new Button(this.binding.getRoot().getContext());
             addRatingButton.setText(R.string.add_rating_button_label);
-            this.binding.resultsDisplay.addView(addRatingButton);
+            locationLayout.addView(addRatingButton);
 
             addRatingButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v){
                     // notify the listener
-                    SearchFragment.this.listener.onAddRatingPress(SearchFragment.this);
+                    SearchFragment.this.listener.onAddRatingPress(SearchFragment.this, location);
                 }
             }
             );
-
-        } else {
-            this.binding.resultsDisplay.removeView(addRatingButton);
-            this.binding.resultsDisplay.addView(addRatingButton);
         }
     }
 
     @Override
     public void displaySearchFailure() {
-        this.binding.resultsDisplay.removeView(addRatingButton);
-        this.binding.resultText.setText("Your search did not match any locations");
+        TextView failureText = new TextView(this.binding.getRoot().getContext());
+        failureText.setText("Your search did not match any locations");
+        this.binding.resultsDisplay.addView(failureText);
     }
 }
