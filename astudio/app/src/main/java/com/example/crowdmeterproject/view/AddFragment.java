@@ -19,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class AddFragment extends Fragment implements IAddView {
     Listener listener;
     FragmentAddBinding binding;
+    int selectedRating = 0;
 
     public AddFragment(@NonNull Listener listener){
         this.listener = listener;
@@ -36,26 +37,65 @@ public class AddFragment extends Fragment implements IAddView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        this.binding.ratingButton1AddScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedRating = 1;
+                Snackbar.make(v, String.format("Selected rating of %d", selectedRating), Snackbar.LENGTH_LONG).show();
+            }
+        }
+        );
+
+        this.binding.ratingButton2AddScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedRating = 2;
+                Snackbar.make(v, String.format("Selected rating of %d", selectedRating), Snackbar.LENGTH_LONG).show();
+            }
+        }
+        );
+
+        this.binding.ratingButton3AddScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedRating = 3;
+                Snackbar.make(v, String.format("Selected rating of %d", selectedRating), Snackbar.LENGTH_LONG).show();
+            }
+        }
+        );
+
+        this.binding.ratingButton4AddScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedRating = 4;
+                Snackbar.make(v, String.format("Selected rating of %d", selectedRating), Snackbar.LENGTH_LONG).show();
+            }
+        }
+        );
+
+        this.binding.ratingButton5AddScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedRating = 5;
+                Snackbar.make(v, String.format("Selected rating of %d", selectedRating), Snackbar.LENGTH_LONG).show();}
+        }
+        );
+
         this.binding.addLocButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                Editable locationNameEditable = binding.locationName.getText();
+                Editable locationNameEditable = binding.addLocationNameField.getText();
                 String locationName = locationNameEditable.toString();
 
-                Editable crowdRatingEditable = binding.crowdRating.getText();
-
-                if (crowdRatingEditable.length() == 0){
+                if (selectedRating == 0){
                     // notify the user
                     Snackbar.make(v, String.format("Successfully added %s with no crowd rating", locationName), Snackbar.LENGTH_LONG).show();
                     // notify the listener
                     AddFragment.this.listener.onAdded(0, locationName, AddFragment.this);
                 } else {
-                    String crowdRatingString = crowdRatingEditable.toString();
-                    int crowdRating = Integer.parseInt(crowdRatingString);
-
                     // notify the listener
-                    AddFragment.this.listener.onAdded(crowdRating, locationName, AddFragment.this);
+                    AddFragment.this.listener.onAdded(selectedRating, locationName, AddFragment.this);
                     // notify the user
-                    Snackbar.make(v, String.format("Successfully added %s with crowd rating of %d", locationName, crowdRating), Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, String.format("Successfully added %s with crowd rating of %d", locationName, selectedRating), Snackbar.LENGTH_LONG).show();
 
                 }
             }
