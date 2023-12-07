@@ -20,6 +20,10 @@ public class Location {
         this.crowdRating = crowdRating;
     }
 
+    public Location(String name){
+        this.name = name;
+    }
+
     // to print a location, display its name and its crowd rating
     public String toString(){
         return "Location name: " + name + "\nCrowd rating: " + crowdRating;
@@ -37,10 +41,15 @@ public class Location {
      */
     public double getRatingAve(){
         double sizeOfRatings = allRatings.size(); //size of allRatings list
+
+        if (sizeOfRatings == 0){
+            return 0;
+        }
+
         double counter = 0;     //counter represents the accumulating number from all the ratings added up
 
         for (int i = 0; i < sizeOfRatings; i++) { //iterate through the list of allRatings
-            counter = counter + allRatings.get(i).number;
+                counter = counter + allRatings.get(i).number;
         }
         crowdRating = (double) (counter / sizeOfRatings);
         return crowdRating;

@@ -10,8 +10,7 @@ public interface ISearchView {
 
     public interface Listener {
         void onSearched(String searchInput, ISearchView view);
-        void onAddRatingPress(ISearchView view, Location currentLocation);
-
+        void onViewLocationPress(ISearchView view, Location currentLocation);
         List<Location> getAllLocations();
     }
 

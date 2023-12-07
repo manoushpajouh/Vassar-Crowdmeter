@@ -39,8 +39,8 @@ public class LocationsLibrary {
      * The following function will add a newly created location to the list locations
      * @param name is  the name of the location
      */
-    public Location addLocation(String name, int initialRating){
-        Location l = new Location(name, initialRating);
+    public Location addLocation(String name){
+        Location l = new Location(name);
         locations.add(l);
         return l;
     }

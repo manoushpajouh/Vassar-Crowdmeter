@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/viewCommentsButton"
+        android:layout_width="142dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/view_comments_button_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addRatingButton" />
+
+    <TextView
+        android:id="@+id/locationNameText"
+        android:layout_width="342dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:text="Location Name"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/crowdRatingDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addRatingButton"
+        android:layout_width="142dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/add_rating_button_label"
+        app:layout_constraintBottom_toTopOf="@+id/viewCommentsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRange" />
+
+    <TextView
+        android:id="@+id/crowdRatingDisplay"
+        android:layout_width="124dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginEnd="144dp"
+        android:text="5"
+        android:textAlignment="center"
+        android:textColor="#FF5722"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/sliderLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationNameText" />
+
+    <SeekBar
+        android:id="@+id/timeRangeSlider"
+        android:layout_width="234dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginEnd="88dp"
+        app:layout_constraintBottom_toTopOf="@+id/timeRange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sliderLabel" />
+
+    <TextView
+        android:id="@+id/timeRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="40dp"
+        android:text="Time range"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/addRatingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRangeSlider" />
+
+    <TextView
+        android:id="@+id/sliderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/slider_label"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/timeRangeSlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crowdRatingDisplay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

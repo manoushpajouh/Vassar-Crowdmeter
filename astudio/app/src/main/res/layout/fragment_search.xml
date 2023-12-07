@@ -10,15 +10,16 @@
         android:layout_width="382dp"
         android:layout_height="52dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="text"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/searchLocsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/searchLocsButton"
@@ -26,23 +27,34 @@
         android:layout_height="76dp"
         android:text="Search"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
-    <LinearLayout
-        android:id="@+id/resultsDisplay"
-        android:layout_width="352dp"
-        android:layout_height="304dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="370dp"
+        android:layout_height="351dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchLocsButton"
-        app:layout_constraintVertical_bias="0.456" />
+        app:layout_constraintTop_toBottomOf="@+id/searchLocsButton">
+
+        <TableLayout
+            android:id="@+id/resultsDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            android:stretchColumns="1" />
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

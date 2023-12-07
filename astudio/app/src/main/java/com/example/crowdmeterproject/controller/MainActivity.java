@@ -9,15 +9,17 @@ import com.example.crowdmeterproject.model.LocationsLibrary;
 import com.example.crowdmeterproject.view.AddRatingFragment;
 import com.example.crowdmeterproject.view.IAddRatingsView;
 import com.example.crowdmeterproject.view.IAddView;
+import com.example.crowdmeterproject.view.ILocationView;
 import com.example.crowdmeterproject.view.IMainView;
 import com.example.crowdmeterproject.view.ISearchView;
+import com.example.crowdmeterproject.view.LocationFragment;
 import com.example.crowdmeterproject.view.MainView;
 import com.example.crowdmeterproject.view.SearchFragment;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements
-        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener {
+        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener, ILocationView.Listener {
     LocationsLibrary locationsLibrary = new LocationsLibrary();
     IMainView mainView;
     Location currentLocation; // the location that the user is currently looking at (on the add rating screen for)
@@ -48,19 +50,21 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onAddRatingPress(ISearchView view, Location currentLocation) {
+    public void onAddRatingPress(ILocationView view) {
+        mainView.displayFragment(new AddRatingFragment(this), false, "addRatingFragment");
+    }
+
+    @Override
+    public void onViewLocationPress(ISearchView view, Location currentLocation){
         this.currentLocation = currentLocation;
 
-        mainView.displayFragment(new AddRatingFragment(this), false, "addRatingFragment");
-
-
+        mainView.displayFragment(new LocationFragment(this, currentLocation), false, "location_fragment");
     }
+
 
     @Override
     public void onAddPress(){
         mainView.displayFragment(new AddFragment(this), false, "add_fragment");
-
-
     }
 
     @Override
@@ -70,8 +74,13 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onAdded(int crowdRating, String locationName, IAddView view){
-        locationsLibrary.addLocation(locationName, crowdRating)
-                .addRating(crowdRating);
+        if (crowdRating == 0) {
+            locationsLibrary.addLocation(locationName);
+        }
+        else {
+            locationsLibrary.addLocation(locationName)
+                    .addRating(crowdRating);
+        }
     }
 
     @Override
