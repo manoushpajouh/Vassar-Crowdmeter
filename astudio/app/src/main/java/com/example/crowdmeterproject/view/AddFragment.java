@@ -86,7 +86,11 @@ public class AddFragment extends Fragment implements IAddView {
                 Editable locationNameEditable = binding.addLocationNameField.getText();
                 String locationName = locationNameEditable.toString();
 
-                if (selectedRating == 0){
+                if (locationName.length() > 20){
+                    // notify the user of character limit
+                    Snackbar.make(v, "Please limit your location name to 20 characters", Snackbar.LENGTH_LONG).show();
+                }
+                else if (selectedRating == 0){
                     // notify the user
                     Snackbar.make(v, String.format("Successfully added %s with no crowd rating", locationName), Snackbar.LENGTH_LONG).show();
                     // notify the listener

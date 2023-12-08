@@ -8,8 +8,10 @@ import com.example.crowdmeterproject.view.AddFragment;
 import com.example.crowdmeterproject.model.Location;
 import com.example.crowdmeterproject.model.LocationsLibrary;
 import com.example.crowdmeterproject.view.AddRatingFragment;
+import com.example.crowdmeterproject.view.DeleteFragment;
 import com.example.crowdmeterproject.view.IAddRatingsView;
 import com.example.crowdmeterproject.view.IAddView;
+import com.example.crowdmeterproject.view.IDeleteView;
 import com.example.crowdmeterproject.view.ILocationView;
 import com.example.crowdmeterproject.view.IMainView;
 import com.example.crowdmeterproject.view.ISearchView;
@@ -22,7 +24,7 @@ import com.example.crowdmeterproject.view.ShowCommentsFragment;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements
-        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener, ILocationView.Listener, IShowCommentsView.Listener {
+        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener, ILocationView.Listener, IShowCommentsView.Listener, IDeleteView.Listener {
     LocationsLibrary locationsLibrary = new LocationsLibrary();
     IMainView mainView;
     Location currentLocation; // the location that the user is currently looking at (on the add rating screen for)
@@ -66,6 +68,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onViewCommentsPress(ILocationView view){
         mainView.displayFragment(new ShowCommentsFragment(this, currentLocation), false, "comment_fragment");
+    }
+    @Override
+    public void onDeletePress(ILocationView view){
+        mainView.displayFragment(new DeleteFragment(this), false, "delete_fragment");
+    }
+    @Override
+    public void onDeleteLocPress(IDeleteView view){
+       locationsLibrary.deleteLocation(currentLocation);
     }
 
     @Override

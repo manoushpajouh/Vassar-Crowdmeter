@@ -44,7 +44,9 @@ public class LocationsLibrary {
         locations.add(l);
         return l;
     }
-
+    public void deleteLocation(Location l){
+        locations.remove(l);
+    }
     public List<Location> searchByName(String searchInput) {
         List<Location> retLocations = new ArrayList<>();
 

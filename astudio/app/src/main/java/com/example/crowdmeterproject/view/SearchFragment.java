@@ -92,7 +92,7 @@ public class SearchFragment extends Fragment implements ISearchView {
             this.binding.resultsDisplay.addView(locationRow);
 
             TextView locationNameText = new TextView(this.binding.getRoot().getContext());
-            locationNameText.setText("   " + location.getName() + "         ");
+            locationNameText.setText("   " + location.getName() + "   ");
             locationNameText.setTextSize(18);
             locationNameText.setTextColor(Color.parseColor("#000000"));
             locationRow.addView(locationNameText);

@@ -6,7 +6,12 @@
     <string name="view_comments_button_label">View comments</string>
     <string name="view_location_button_label">View location</string>
     <string name="location_comment_screen_label">Location: </string>
-    <string name="slider_label">Display average for  </string>
+    <string name="delete_button_label">Delete </string>
+    <string name="delete_loc_button_label">Delete location  </string>
+    <string name="password_field_label">Please enter administrator password </string>
+    <string name="slider_label">Display average for the past </string>
+
+
     <string-array name="spinner_entries">
         <item>All time</item>
         <item>1 hr</item>

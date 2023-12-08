@@ -143,5 +143,12 @@ public class LocationFragment extends Fragment implements ILocationView{
             }
         }
         );
+        this.binding.deleteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                // notify the listener
+                LocationFragment.this.listener.onDeletePress(LocationFragment.this);
+            }
+        }
+        );
     }
 }
