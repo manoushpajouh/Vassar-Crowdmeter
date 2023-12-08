@@ -1,9 +1,13 @@
 package com.example.crowdmeterproject.model;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Rating {
     public int number;
     //String color = null;
     String comment = null;
+    Date time;
 
     /**
      * Constructor to create a rating without a comment
@@ -11,7 +15,7 @@ public class Rating {
     public Rating(int number) {
         //make sure the parameter is equal to the field
         this.number = number;
-
+        this.time = Calendar.getInstance().getTime();
     }
 
     /**
@@ -28,5 +32,9 @@ public class Rating {
             retString += ", Comment of '" + comment + "'";
         }
         return retString;
+    }
+
+    public Date getTime(){
+        return this.time;
     }
 }

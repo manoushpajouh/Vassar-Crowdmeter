@@ -6,7 +6,16 @@
     <string name="view_comments_button_label">View comments</string>
     <string name="view_location_button_label">View location</string>
     <string name="location_comment_screen_label">Location: </string>
-    <string name="slider_label">Display average for: </string>
+    <string name="slider_label">Display average for  </string>
+    <string-array name="spinner_entries">
+        <item>All time</item>
+        <item>1 hr</item>
+        <item>2 hrs</item>
+        <item>4 hrs</item>
+        <item>6 hrs</item>
+        <item>8 hrs</item>
+    </string-array>
+
 
     <!-- general purpose -->
     <string name="app_name">Vassar CrowdMeter</string>

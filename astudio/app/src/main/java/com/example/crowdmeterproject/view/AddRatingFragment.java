@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.crowdmeterproject.databinding.AddRatingFragmentBinding;
+import com.example.crowdmeterproject.model.Comment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -101,6 +102,7 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
                 // retrieves location name
                 final Editable commentEnteredEditable = AddRatingFragment.this.binding.commentField.getText();
                 final String commentString = commentEnteredEditable.toString();
+                Comment comment = new Comment(commentString);
 
 
                 // confirm we have rating number (comment doesn't matter)
@@ -108,8 +110,8 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
                     Snackbar.make(v, "Please select a rating to add", Snackbar.LENGTH_LONG).show();
                 } else {
                     // notify listener (controller) and add rating //two versions in case comment or not
-                    if (commentEnteredEditable != null || !(commentEnteredEditable.equals(""))) {
-                        AddRatingFragment.this.listener.addCommentRatingToLoc(commentString, selectedRating,
+                    if (!(commentString.equals(""))) {
+                        AddRatingFragment.this.listener.addCommentRatingToLoc(comment, selectedRating,
                                 AddRatingFragment.this);
                     } else {
                         AddRatingFragment.this.listener.addRatingToLoc(selectedRating,

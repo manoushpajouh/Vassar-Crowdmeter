@@ -38,13 +38,14 @@
         android:id="@+id/addRatingButton"
         android:layout_width="142dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/add_rating_button_label"
         app:layout_constraintBottom_toTopOf="@+id/viewCommentsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeRange" />
+        app:layout_constraintTop_toBottomOf="@+id/timeRangeSpinner" />
 
     <TextView
         android:id="@+id/crowdRatingDisplay"
@@ -61,42 +62,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationNameText" />
 
-    <SeekBar
-        android:id="@+id/timeRangeSlider"
+    <Spinner
+        android:id="@+id/timeRangeSpinner"
         android:layout_width="234dp"
         android:layout_height="47dp"
         android:layout_marginStart="88dp"
         android:layout_marginEnd="88dp"
-        app:layout_constraintBottom_toTopOf="@+id/timeRange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sliderLabel" />
-
-    <TextView
-        android:id="@+id/timeRange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="40dp"
-        android:text="Time range"
-        android:textAlignment="center"
+        android:entries="@array/spinner_entries"
         app:layout_constraintBottom_toTopOf="@+id/addRatingButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeRangeSlider" />
+        app:layout_constraintTop_toBottomOf="@+id/sliderLabel" />
 
     <TextView
         android:id="@+id/sliderLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="144dp"
-        android:layout_marginBottom="30dp"
         android:text="@string/slider_label"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/timeRangeSlider"
+        app:layout_constraintBottom_toTopOf="@+id/timeRangeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crowdRatingDisplay" />

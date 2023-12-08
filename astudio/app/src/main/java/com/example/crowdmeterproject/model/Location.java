@@ -2,7 +2,10 @@ package com.example.crowdmeterproject.model;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Class that defines a location object with name and crowd rating fields.
@@ -11,8 +14,7 @@ public class Location {
     public String name; // name of location
     double crowdRating; // how busy is it, 1-5?
     public List<Rating> allRatings = new ArrayList<>(); // list of ratings for specific location
-
-    public List<String> allComments = new ArrayList<>(); //list of all comments for a specific location
+    public List<Comment> allComments = new ArrayList<>(); // list of all comments for a specific location
 
 
     public Location(String name, double crowdRating){
@@ -31,6 +33,9 @@ public class Location {
     public String getName(){
         return this.name;
     }
+    public List<Comment> getComments(){
+        return this.allComments;
+    }
 
 
     /**
@@ -46,10 +51,32 @@ public class Location {
             return 0;
         }
 
-        double counter = 0;     //counter represents the accumulating number from all the ratings added up
+        double counter = 0; //counter represents the accumulating number from all the ratings added up
 
         for (int i = 0; i < sizeOfRatings; i++) { //iterate through the list of allRatings
                 counter = counter + allRatings.get(i).number;
+        }
+        crowdRating = (double) (counter / sizeOfRatings);
+        return crowdRating;
+    }
+
+    public double getRatingAveTime(int hours){
+        List<Rating> ratingsInRange = new ArrayList<>();
+
+        Date now = Calendar.getInstance().getTime();
+
+        for (Rating rating : allRatings){
+            if ((now.getTime() - rating.getTime().getTime()) / 3600000 <= hours){ // convert from milliseconds to hours
+                ratingsInRange.add(rating);
+            }
+        }
+
+        int sizeOfRatings = ratingsInRange.size();
+
+        double counter = 0; //counter represents the accumulating number from all the ratings added up
+
+        for (int i = 0; i < sizeOfRatings; i++) { //iterate through the list of allRatings
+            counter = counter + allRatings.get(i).number;
         }
         crowdRating = (double) (counter / sizeOfRatings);
         return crowdRating;
@@ -64,8 +91,8 @@ public class Location {
         allRatings.add(rating);
     }
 
-    public void addCommentRating(int rateNum, String newComment){
-        Rating rating = new Rating(rateNum, newComment);
+    public void addCommentRating(int rateNum, Comment newComment){
+        Rating rating = new Rating(rateNum);
         allRatings.add(rating);
         allComments.add(newComment);
     }

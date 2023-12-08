@@ -7,8 +7,5 @@ public interface IShowCommentsView {
 
 
     }
-    public void displayComments (Location location);
-
-
 
 }

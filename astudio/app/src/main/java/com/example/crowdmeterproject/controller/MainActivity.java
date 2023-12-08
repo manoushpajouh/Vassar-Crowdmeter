@@ -3,6 +3,7 @@ package com.example.crowdmeterproject.controller;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.crowdmeterproject.model.Comment;
 import com.example.crowdmeterproject.view.AddFragment;
 import com.example.crowdmeterproject.model.Location;
 import com.example.crowdmeterproject.model.LocationsLibrary;
@@ -12,14 +13,16 @@ import com.example.crowdmeterproject.view.IAddView;
 import com.example.crowdmeterproject.view.ILocationView;
 import com.example.crowdmeterproject.view.IMainView;
 import com.example.crowdmeterproject.view.ISearchView;
+import com.example.crowdmeterproject.view.IShowCommentsView;
 import com.example.crowdmeterproject.view.LocationFragment;
 import com.example.crowdmeterproject.view.MainView;
 import com.example.crowdmeterproject.view.SearchFragment;
+import com.example.crowdmeterproject.view.ShowCommentsFragment;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements
-        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener, ILocationView.Listener {
+        ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener, ILocationView.Listener, IShowCommentsView.Listener {
     LocationsLibrary locationsLibrary = new LocationsLibrary();
     IMainView mainView;
     Location currentLocation; // the location that the user is currently looking at (on the add rating screen for)
@@ -60,7 +63,10 @@ public class MainActivity extends AppCompatActivity implements
 
         mainView.displayFragment(new LocationFragment(this, currentLocation), false, "location_fragment");
     }
-
+    @Override
+    public void onViewCommentsPress(ILocationView view){
+        mainView.displayFragment(new ShowCommentsFragment(this, currentLocation), false, "comment_fragment");
+    }
 
     @Override
     public void onAddPress(){
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void addCommentRatingToLoc(String comment, int number, IAddRatingsView view) {
+    public void addCommentRatingToLoc(Comment comment, int number, IAddRatingsView view) {
         currentLocation.addCommentRating(number, comment);
         currentLocation.updateRatingAve();
     }
