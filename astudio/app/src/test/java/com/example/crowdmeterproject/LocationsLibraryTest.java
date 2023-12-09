@@ -18,15 +18,15 @@ public class LocationsLibraryTest {
         LocationsLibrary l = new LocationsLibrary();
         assertEquals(0, l.getLocations().size());
 
-        l.addLocation("test", 0);
+        l.addLocation("test");
         assertEquals(1, l.getLocations().size());
     }
 
     @Test
     public void searchTest() {
         LocationsLibrary l = new LocationsLibrary();
-        l.addLocation("test", 0);
+        l.addLocation("test");
 
-        assertEquals("Location name: test\nCrowd rating: 0.0", (l.searchByName("test")).toString());
+        assertEquals("[Location name: test\nCrowd rating: 0.0]", (l.searchByName("test")).toString());
     }
 }

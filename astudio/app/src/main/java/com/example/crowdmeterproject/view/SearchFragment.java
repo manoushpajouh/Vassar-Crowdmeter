@@ -22,6 +22,9 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
+/**
+ * Class that manages the search fragment, where the user searches for existing locations.
+ */
 public class SearchFragment extends Fragment implements ISearchView {
     FragmentSearchBinding binding;
     Listener listener;
@@ -56,6 +59,12 @@ public class SearchFragment extends Fragment implements ISearchView {
         displaySearchResults(this.listener.getAllLocations());
     }
 
+    /**
+     * Displays any results for the user's search. Each result has a background color that
+     * corresponds to its current rating average and a button to view the location, both of
+     * which are created programmatically and added to the existing table layout.
+     * @param searchResults the list of locations match the user's search string
+     */
     @Override
     public void displaySearchResults(List<Location> searchResults) {
 
@@ -86,21 +95,21 @@ public class SearchFragment extends Fragment implements ISearchView {
             else {
                 color = "#30FF5722";
             }
-
+            // add a row to the table to display a location, and set its background to the right color
             TableRow locationRow = new TableRow(this.binding.getRoot().getContext());
             locationRow.setBackgroundColor(Color.parseColor(color));
             this.binding.resultsDisplay.addView(locationRow);
-
+            // display the location name in the row
             TextView locationNameText = new TextView(this.binding.getRoot().getContext());
             locationNameText.setText("   " + location.getName() + "   ");
             locationNameText.setTextSize(18);
-            locationNameText.setTextColor(Color.parseColor("#000000"));
+            locationNameText.setTextColor(Color.parseColor("#000000")); // black so that it stands out
             locationRow.addView(locationNameText);
-
+            // add a button to the row to view the location
             MaterialButton viewLocationButton = new MaterialButton(this.binding.getRoot().getContext());
             viewLocationButton.setText(R.string.view_location_button_label);
             locationRow.addView(viewLocationButton);
-
+            // make the button clickable
             viewLocationButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v){
                     // notify the listener
@@ -111,6 +120,9 @@ public class SearchFragment extends Fragment implements ISearchView {
         }
     }
 
+    /**
+     * Called when the user's search string matches no locations. Informs the user.
+     */
     @Override
     public void displaySearchFailure() {
         TextView failureText = new TextView(this.binding.getRoot().getContext());

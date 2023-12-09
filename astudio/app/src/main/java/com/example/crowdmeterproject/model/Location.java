@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Class that defines a location object with name and crowd rating fields.
+ * Class that defines a location object with name and crowd rating fields. Also stores
+ * a list of all ratings for that location and list of all comments.
  */
 public class Location {
     public String name; // name of location
@@ -26,7 +27,6 @@ public class Location {
         this.name = name;
     }
 
-    // to print a location, display its name and its crowd rating
     public String toString(){
         return "Location name: " + name + "\nCrowd rating: " + crowdRating;
     }
@@ -60,12 +60,17 @@ public class Location {
         return crowdRating;
     }
 
+    /**
+     * Returns the average rating within a specified time range.
+     * @param hours number of hours since start of time range
+     * @return the average rating since the specified number of hours
+     */
     public double getRatingAveTime(int hours){
         List<Rating> ratingsInRange = new ArrayList<>();
 
-        Date now = Calendar.getInstance().getTime();
+        Date now = Calendar.getInstance().getTime(); // get the current time
 
-        for (Rating rating : allRatings){
+        for (Rating rating : allRatings){ // checks if each rating is within time range
             if ((now.getTime() - rating.getTime().getTime()) / 3600000 <= hours){ // convert from milliseconds to hours
                 ratingsInRange.add(rating);
             }
@@ -86,11 +91,18 @@ public class Location {
         this.crowdRating = this.getRatingAve();
     }
 
+    /**
+     * Adds a rating with no comment.
+     * @param ratingNumber
+     */
     public void addRating(int ratingNumber) {
         Rating rating = new Rating(ratingNumber);
         allRatings.add(rating);
     }
-
+    /**
+     * Adds a rating with a comment.
+     * @param rateNum
+     */
     public void addCommentRating(int rateNum, Comment newComment){
         Rating rating = new Rating(rateNum);
         allRatings.add(rating);

@@ -11,6 +11,10 @@ import com.example.crowdmeterproject.controller.MainActivity;
 import com.example.crowdmeterproject.databinding.MainBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * Class managing the main view fragment. Responds to add and browse buttons used to
+ * switch screens.
+ */
 public class MainView implements IMainView {
     MainBinding binding;
     FragmentManager fragmentManager;

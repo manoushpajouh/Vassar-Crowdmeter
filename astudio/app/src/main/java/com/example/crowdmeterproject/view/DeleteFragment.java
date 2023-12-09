@@ -15,6 +15,10 @@ import com.example.crowdmeterproject.databinding.FragmentLocationBinding;
 import com.example.crowdmeterproject.databinding.FragmentSearchBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * Class that manages the delete fragment, where an administrator can delete the current
+ * location.
+ */
 public class DeleteFragment extends Fragment implements IDeleteView{
     FragmentDeleteBinding binding;
     IDeleteView.Listener listener;
@@ -35,7 +39,7 @@ public class DeleteFragment extends Fragment implements IDeleteView{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String password = "12345";
+        String password = "12345"; // requires a password for security reasons
 
         this.binding.deleteLocButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -45,7 +49,7 @@ public class DeleteFragment extends Fragment implements IDeleteView{
                 if (passwordEntered.equals(password)) {
                     // notify the listener
                     DeleteFragment.this.listener.onDeleteLocPress(DeleteFragment.this);
-                    Snackbar.make(v, "It's gone", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(v, "Location successfully deleted", Snackbar.LENGTH_LONG).show();
                 }
                 else {
                     Snackbar.make(v, "Nice try", Snackbar.LENGTH_LONG).show();

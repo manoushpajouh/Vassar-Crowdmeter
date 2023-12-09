@@ -21,8 +21,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.example.crowdmeterproject.model.Rating;
 import com.example.crowdmeterproject.R;
 
-
-
+/**
+ * Class managing the add rating fragment, from which the user can a rating to a location.
+ */
 public class AddRatingFragment extends Fragment implements IAddRatingsView {
 
     AddRatingFragmentBinding binding; // will call the widgets (xml)

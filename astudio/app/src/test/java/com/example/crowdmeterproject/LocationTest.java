@@ -1,6 +1,8 @@
 package com.example.crowdmeterproject;
 
 import junit.framework.TestCase;
+
+import com.example.crowdmeterproject.model.Comment;
 import com.example.crowdmeterproject.model.Location;
 import com.example.crowdmeterproject.model.Rating;
 import com.example.crowdmeterproject.model.LocationsLibrary;
@@ -47,8 +49,10 @@ public class LocationTest extends TestCase {
     public void testAddCommentRating() {
         //run the add rating function on a random number to a test location
         Location testLoc = new Location("Library", 0.0);
-        testLoc.addCommentRating(2, "very busy");
-        testLoc.addCommentRating(4, "very busy");
+        Comment comment = new Comment("very busy");
+
+        testLoc.addCommentRating(2, comment);
+        testLoc.addCommentRating(4, comment);
         //check that the rating was actually added
         assertEquals(testLoc.allRatings.size(), 2);
         //check that the overall rating changed correctly

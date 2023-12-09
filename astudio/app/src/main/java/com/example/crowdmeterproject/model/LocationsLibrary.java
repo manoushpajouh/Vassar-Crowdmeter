@@ -5,6 +5,9 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that stores list of all locations in the app.
+ */
 public class LocationsLibrary {
     List<Location> locations = new ArrayList(){{}}; // a list of all locations
 
@@ -34,7 +37,6 @@ public class LocationsLibrary {
         }
         return locExists;
     }
-
     /**
      * The following function will add a newly created location to the list locations
      * @param name is  the name of the location
@@ -44,9 +46,20 @@ public class LocationsLibrary {
         locations.add(l);
         return l;
     }
+
+    /**
+     * Deletes a location from the library.
+     * @param l
+     */
     public void deleteLocation(Location l){
         locations.remove(l);
     }
+
+    /**
+     * Returns all locations whose name matches searchInput.
+     * @param searchInput search string
+     * @return lisr of all matching locations
+     */
     public List<Location> searchByName(String searchInput) {
         List<Location> retLocations = new ArrayList<>();
 
