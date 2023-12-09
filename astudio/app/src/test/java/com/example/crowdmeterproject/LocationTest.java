@@ -10,6 +10,9 @@ import com.example.crowdmeterproject.model.LocationsLibrary;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Test class for methods in location class.
+ */
 public class LocationTest extends TestCase {
 
     public void testTestToString() {

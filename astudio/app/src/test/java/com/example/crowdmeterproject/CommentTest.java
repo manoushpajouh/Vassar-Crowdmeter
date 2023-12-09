@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CommentTest {
     /**
-     * Test method for compareTO in comment class. Creates three comments and then
+     * Test method for compareTo in comment class. Creates three comments and then
      * checks to make sure they are displayed in reverse chronological order. Uses
      * delays to ensure that time distance between comments is large enough.
      */
