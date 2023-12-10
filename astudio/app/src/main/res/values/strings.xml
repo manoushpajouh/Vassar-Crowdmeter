@@ -1,9 +1,26 @@
 <resources>
     <string name="title_display">Vassar Crowdmeter</string>
-    <string name="search">Search</string>
+    <string name="search">Browse</string>
     <string name="add">Add</string>
-    <string name="add_rating_button_label">Add Rating</string>
+    <string name="add_rating_button_label">Add rating</string>
+    <string name="view_comments_button_label">View comments</string>
+    <string name="view_location_button_label">View location</string>
     <string name="location_comment_screen_label">Location: </string>
+    <string name="delete_button_label">Delete </string>
+    <string name="delete_loc_button_label">Delete location  </string>
+    <string name="password_field_label">Please enter administrator password </string>
+    <string name="slider_label">Display average for the past </string>
+
+
+    <string-array name="spinner_entries">
+        <item>All time</item>
+        <item>1 hr</item>
+        <item>2 hrs</item>
+        <item>4 hrs</item>
+        <item>6 hrs</item>
+        <item>8 hrs</item>
+    </string-array>
+
 
     <!-- general purpose -->
     <string name="app_name">Vassar CrowdMeter</string>

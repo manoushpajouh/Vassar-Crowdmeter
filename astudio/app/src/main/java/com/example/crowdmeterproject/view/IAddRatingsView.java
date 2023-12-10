@@ -1,5 +1,6 @@
 package com.example.crowdmeterproject.view;
 
+import com.example.crowdmeterproject.model.Comment;
 import com.example.crowdmeterproject.model.Rating;
 
 /**
@@ -19,7 +20,7 @@ public interface IAddRatingsView {
          * @param number rating number going to be added
          * @param view the view where the event originated
          */
-        void addCommentRatingToLoc(String comment, int number, IAddRatingsView view);
+        void addCommentRatingToLoc(Comment comment, int number, IAddRatingsView view);
 
         /**
          * Called when a Rating without a comment is added to the Location
@@ -34,11 +35,4 @@ public interface IAddRatingsView {
          */
         void completedRatings();
     }
-
-    /**
-     * Update display to reflect contents of the rating passed as an argument.
-     * @param rating is the rating going to be displayed
-     *        the rating most recently added
-     */
-    void updateRatingDisplay(Rating rating);
 }

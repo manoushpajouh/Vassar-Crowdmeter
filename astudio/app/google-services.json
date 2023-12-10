@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "911279971539",
+    "project_id": "crowdmeterproject-a4580",
+    "storage_bucket": "crowdmeterproject-a4580.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911279971539:android:f198ffe90f437a02084826",
+        "android_client_info": {
+          "package_name": "com.example.crowdmeterproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUFm3-veWR5vg5Hi0zy1OPQgg5gw1_U7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
