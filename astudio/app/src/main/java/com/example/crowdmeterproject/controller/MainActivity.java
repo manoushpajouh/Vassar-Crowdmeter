@@ -87,34 +87,8 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onAddRatingPress(ILocationView view) {
-<<<<<<< HEAD
         this.currentFragment = new AddRatingFragment(this);
         mainView.displayFragment(this.currentFragment, false, "addRatingFragment");
-=======
-        mainView.displayFragment(new AddRatingFragment(this), false, "addRatingFragment");
-<<<<<<< HEAD
-    }
-
-    @Override
-    public void onViewLocationPress(ISearchView view, Location currentLocation){
-        this.currentLocation = currentLocation;
-
-        mainView.displayFragment(new LocationFragment(this, currentLocation), false, "location_fragment");
-    }
-    @Override
-    public void onViewCommentsPress(ILocationView view){
-        mainView.displayFragment(new ShowCommentsFragment(this, currentLocation), false, "comment_fragment");
-    }
-    @Override
-    public void onDeletePress(ILocationView view){
-        mainView.displayFragment(new DeleteFragment(this), false, "delete_fragment");
-    }
-    @Override
-    public void onDeleteLocPress(IDeleteView view){
-       locationsLibrary.deleteLocation(currentLocation);
-=======
->>>>>>> fbe0c9d930ac9fa3ca6ecfecd884ea5d47f41981
->>>>>>> d645b2c69ae4c56d751b946e5d7a1ea1757cbe1a
     }
 
     /**
