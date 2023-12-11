@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "549918419156",
+    "project_id": "vassarcrowdmeter",
+    "storage_bucket": "vassarcrowdmeter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549918419156:android:a9155d3f48b3ebdaa4f341",
+        "android_client_info": {
+          "package_name": "com.example.crowdmeterproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK8I3Uk5CWlIGISLsNPK044P7nfJ_xepA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

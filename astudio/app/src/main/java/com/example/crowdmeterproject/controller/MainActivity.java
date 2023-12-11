@@ -1,9 +1,13 @@
 package com.example.crowdmeterproject.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
 
 import com.example.crowdmeterproject.model.Comment;
+import com.example.crowdmeterproject.persistence.FirestoreFacade;
+import com.example.crowdmeterproject.persistence.IPersistenceFacade;
 import com.example.crowdmeterproject.view.AddFragment;
 import com.example.crowdmeterproject.model.Location;
 import com.example.crowdmeterproject.model.LocationsLibrary;
@@ -20,24 +24,45 @@ import com.example.crowdmeterproject.view.LocationFragment;
 import com.example.crowdmeterproject.view.MainView;
 import com.example.crowdmeterproject.view.SearchFragment;
 import com.example.crowdmeterproject.view.ShowCommentsFragment;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements
         ISearchView.Listener, IMainView.Listener, IAddView.Listener, IAddRatingsView.Listener, ILocationView.Listener, IShowCommentsView.Listener, IDeleteView.Listener {
-    LocationsLibrary locationsLibrary = new LocationsLibrary();
+    LocationsLibrary locationsLibrary = new LocationsLibrary(); // contains all locations - starts out empty
     IMainView mainView;
     Location currentLocation; // the location that the user is currently looking at (on the add rating screen for)
-
     List<Location> searchResults; // a location that has been successfully searched for by the user
+    IPersistenceFacade persFacade;
+    Fragment currentFragment; // the fragment currently being displayed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        this.persFacade = new FirestoreFacade(); // retrieve locations library from database
+
+        this.currentFragment = new SearchFragment(this);
+        this.persFacade.retrieveLocationsLibrary(new IPersistenceFacade.Listener() {
+            @Override
+            public void onLibRecieved(LocationsLibrary lib) {
+                MainActivity.this.locationsLibrary = lib;
+
+                // update the search fragment
+                if (MainActivity.this.currentFragment instanceof SearchFragment){
+                    ((SearchFragment) MainActivity.this.currentFragment).displaySearchResults(lib.getLocations());
+                }
+            }
+        });
+
         mainView = new MainView(this, this);
 
-        mainView.displayFragment(new SearchFragment(this), false, "search_fragment");
+        mainView.displayFragment(currentFragment, false, "search_fragment");
 
         setContentView(mainView.getRootView());
     }
@@ -62,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onAddRatingPress(ILocationView view) {
-        mainView.displayFragment(new AddRatingFragment(this), false, "addRatingFragment");
+        this.currentFragment = new AddRatingFragment(this);
+        mainView.displayFragment(this.currentFragment, false, "addRatingFragment");
     }
 
     /**
@@ -74,8 +100,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onViewLocationPress(ISearchView view, Location currentLocation){
         this.currentLocation = currentLocation;
+        this.currentFragment = new LocationFragment(this, currentLocation);
 
-        mainView.displayFragment(new LocationFragment(this, currentLocation), false, "location_fragment");
+        mainView.displayFragment(this.currentFragment, false, "location_fragment");
     }
 
     /**
@@ -85,7 +112,9 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onViewCommentsPress(ILocationView view){
-        mainView.displayFragment(new ShowCommentsFragment(this, currentLocation), false, "comment_fragment");
+        this.currentFragment = new ShowCommentsFragment(this, currentLocation);
+
+        mainView.displayFragment(this.currentFragment, false, "comment_fragment");
     }
 
     /**
@@ -94,7 +123,9 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onDeletePress(ILocationView view){
-        mainView.displayFragment(new DeleteFragment(this), false, "delete_fragment");
+        this.currentFragment = new DeleteFragment(this);
+
+        mainView.displayFragment(this.currentFragment, false, "delete_fragment");
     }
 
     /**
@@ -113,7 +144,8 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onAddPress(){
-        mainView.displayFragment(new AddFragment(this), false, "add_fragment");
+        this.currentFragment = new AddFragment(this);
+        mainView.displayFragment(this.currentFragment, false, "add_fragment");
     }
 
     /**
@@ -121,7 +153,8 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onSearchPress(){
-        mainView.displayFragment(new SearchFragment(this), false, "search_fragment");
+        this.currentFragment = new SearchFragment(this);
+        mainView.displayFragment(this.currentFragment, false, "search_fragment");
     }
 
     /**
@@ -164,10 +197,6 @@ public class MainActivity extends AppCompatActivity implements
     public void addRatingToLoc(int number, IAddRatingsView view) {
         currentLocation.addRating(number);
         currentLocation.updateRatingAve();
-    }
-
-    @Override
-    public void completedRatings() {
     }
 
     public List<Location> getAllLocations(){

@@ -1,7 +1,13 @@
 package com.example.crowdmeterproject.model;
 
+
+
+import com.google.firebase.Timestamp;
+
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class representing a crowd rating added by the user. Stores the rating number and the
@@ -12,6 +18,8 @@ public class Rating {
     //String color = null;
     String comment = null;
     Date time; // when was the rating made
+    private static final String NUMBER = "number";
+    private static final String TIME = "time";
 
     /**
      * Constructor to create a rating without a comment
@@ -43,5 +51,27 @@ public class Rating {
     }
     public Date getTime(){
         return this.time;
+    }
+    public void setTime(Date time){
+        this.time = time;
+    }
+
+    public Map<String, Object> toMap(){
+        Map<String,Object> map = new HashMap();
+
+        map.put(NUMBER, this.number);
+        map.put(TIME, this.time);
+
+        return map;
+    }
+    public static Rating fromMap(Map<String,Object> map){
+        int number = (int) (long) map.get(NUMBER);
+        Timestamp ts = (Timestamp) map.get(TIME);
+        Date time = ts.toDate();
+
+        Rating rating = new Rating(number);
+        rating.setTime(time);
+
+        return rating;
     }
 }

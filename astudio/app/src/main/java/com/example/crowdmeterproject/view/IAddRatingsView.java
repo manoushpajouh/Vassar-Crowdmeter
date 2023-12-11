@@ -29,10 +29,5 @@ public interface IAddRatingsView {
          * @param view the view where the event originated
          */
         void addRatingToLoc(int number, IAddRatingsView view);
-
-        /**
-         * Called when the user is done adding rating.
-         */
-        void completedRatings();
     }
 }

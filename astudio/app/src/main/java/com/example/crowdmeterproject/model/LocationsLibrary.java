@@ -2,6 +2,8 @@ package com.example.crowdmeterproject.model;
 
 import androidx.annotation.NonNull;
 
+import com.example.crowdmeterproject.persistence.FirestoreFacade;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,23 +29,15 @@ public class LocationsLibrary {
         return locsString.toString();
     }
     /**
-     * Function checks whether or not the location already exists within the locations list
-     */
-    public boolean locationExists(com.example.crowdmeterproject.model.Location location) {
-        boolean locExists = false;
-        //for each index in the array list
-        for (int i = 0; i < locations.size(); i++) {
-            locExists = (locations.get(i).equals(location)); // return true if location already in the list
-        }
-        return locExists;
-    }
-    /**
-     * The following function will add a newly created location to the list locations
+     * The following function will add a newly created location to the list of locations
      * @param name is  the name of the location
      */
-    public Location addLocation(String name){
+    public Location addLocation(String name) {
+        FirestoreFacade f = new FirestoreFacade();
         Location l = new Location(name);
+        // add to database
         locations.add(l);
+        f.saveLocation(l);
         return l;
     }
 
@@ -53,6 +47,9 @@ public class LocationsLibrary {
      */
     public void deleteLocation(Location l){
         locations.remove(l);
+        // remove from database
+        FirestoreFacade f = new FirestoreFacade();
+        f.deleteLocation(l);
     }
 
     /**
@@ -70,8 +67,10 @@ public class LocationsLibrary {
         }
         return retLocations;
     }
-
     public List<Location> getLocations(){
         return this.locations;
+    }
+    public void setLocations(List<Location> locations){
+        this.locations = locations;
     }
 }

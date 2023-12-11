@@ -1,21 +1,34 @@
 package com.example.crowdmeterproject.model;
 
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.example.crowdmeterproject.persistence.FirestoreFacade;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 /**
  * Class that defines a location object with name and crowd rating fields. Also stores
  * a list of all ratings for that location and list of all comments.
  */
-public class Location {
+public class Location implements Serializable {
     public String name; // name of location
     double crowdRating; // how busy is it, 1-5?
     public List<Rating> allRatings = new ArrayList<>(); // list of ratings for specific location
     public List<Comment> allComments = new ArrayList<>(); // list of all comments for a specific location
+    private static final String NAME = "name";
+    private static final String CROWDRATING = "crowdrating";
+    private static final String RATINGS = "ratings";
+    private static final String COMMENTS = "comments";
 
 
     public Location(String name, double crowdRating){
@@ -35,6 +48,15 @@ public class Location {
     }
     public List<Comment> getComments(){
         return this.allComments;
+    }
+    public void setCrowdRating(double crowdRating){
+        this.crowdRating = crowdRating;
+    }
+    public void setRatings(List<Rating> ratings){
+        this.allRatings = ratings;
+    }
+    public void setComments(List<Comment> comments){
+        this.allComments = comments;
     }
 
 
@@ -87,8 +109,12 @@ public class Location {
         return crowdRating;
     }
 
-    public void updateRatingAve(){
-        this.crowdRating = this.getRatingAve();
+    public void updateRatingAve() {
+        double newRating = this.getRatingAve();
+        FirestoreFacade f = new FirestoreFacade();
+
+        this.crowdRating = newRating;
+        f.updateRatingAverage(newRating, this);
     }
 
     /**
@@ -98,6 +124,7 @@ public class Location {
     public void addRating(int ratingNumber) {
         Rating rating = new Rating(ratingNumber);
         allRatings.add(rating);
+        this.updateRatingAve();
     }
     /**
      * Adds a rating with a comment.
@@ -110,50 +137,57 @@ public class Location {
     }
 
     /**
-     * Function will return the string for whatever color the average rating should be
+     * Converts object of this class to a hashmap for database storage
+     * @return
      */
-    //prints out what color each rating will be depending on the number
-    public String assignColor(){
-        String color;
-        //switch case for every color it could be
-        switch ((int) crowdRating){
-            case 1:
-                color = "Dark Green";
-                break;
-            case 2:
-                color = "Light Green";
-                break;
-            case 3:
-                color = "Yellow";
-                break;
-            case 4:
-                color = "Orange";
-                break;
-            case 5:
-                color = "Red";
-                break;
-            //default is null color
-            default:
-                color = null;
-        }
-        return color;
-    }
+    @NonNull
+    public Map<String,Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(NAME, name);
+        map.put(CROWDRATING, crowdRating);
 
+        List<Map<String,Object>> ratings = new ArrayList<>();
+        for(Rating rating : this.allRatings){
+            ratings.add(rating.toMap());
+        }
+
+        map.put(RATINGS, ratings);
+
+        List<Map<String,Object>> comments = new ArrayList<>();
+        for(Comment comment : this.allComments){
+            comments.add(comment.toMap());
+        }
+
+        map.put(COMMENTS, comments);
+        return map;
+    }
     /**
-     * Function goes through every comment in the location and returns them all
-     * @return string with every comment for the location
+     * Converts map object back to location
      */
-    //useless for showcomments fragment because it needs to go through a list
-    public String showComments(){
-        String retString = "";
-        //for each comment that has been made for the location
-        for (int i = 0; i < allComments.size(); i++){
-            //print it
-           retString = retString + (allComments.get(i));
+    @NonNull
+    public static Location fromMap(Map<String,Object> map){
+        String locName = (String) map.get(NAME);
+        double crowdRating = (double) map.get(CROWDRATING);
+        List<Map<String,Object>> ratingMaps = (List<Map<String,Object>>) map.get(RATINGS);
+        List<Map<String,Object>> commentMaps = (List<Map<String,Object>>) map.get(COMMENTS);
+
+        List<Rating> ratings = new ArrayList<>();
+
+        for (Map<String,Object> rating : ratingMaps){
+            ratings.add(Rating.fromMap(rating));
         }
-        return retString;
+
+        List<Comment> comments = new ArrayList<>();
+
+        for (Map<String,Object> comment : commentMaps){
+            comments.add(Comment.fromMap(comment));
+        }
+
+        Location returnLoc = new Location(locName);
+        returnLoc.setCrowdRating(crowdRating);
+        returnLoc.setRatings(ratings);
+        returnLoc.setComments(comments);
+
+        return returnLoc;
     }
-
-
-
 }
