@@ -10,6 +10,9 @@ import com.example.crowdmeterproject.model.LocationsLibrary;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Test class for methods in location class.
+ */
 public class LocationTest extends TestCase {
 
     public void testTestToString() {
@@ -49,8 +52,11 @@ public class LocationTest extends TestCase {
     public void testAddCommentRating() {
         //run the add rating function on a random number to a test location
         Location testLoc = new Location("Library", 0.0);
-        testLoc.addCommentRating(2, new Comment("very busy"));
-        testLoc.addCommentRating(4, new Comment("very busy"));
+
+        Comment comment = new Comment("very busy");
+
+        testLoc.addCommentRating(2, comment);
+        testLoc.addCommentRating(4, comment);
         //check that the rating was actually added
         assertEquals(testLoc.allRatings.size(), 2);
         //check that the overall rating changed correctly

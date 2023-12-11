@@ -20,7 +20,7 @@ import com.example.crowdmeterproject.view.SearchFragment;
 
 
 /**
- * A class designed to test the application's add items screen.
+ * A class designed to test the application's add locations screen.
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
@@ -44,16 +44,14 @@ public class AddCommentRatingTest {
         addLocButton.perform(ViewActions.click());
 
         // find the location name typing box and enter the word library
-        ViewInteraction addLocation = Espresso.onView(ViewMatchers.withId(R.id.locationName));
+        ViewInteraction addLocation = Espresso.onView(ViewMatchers.withId(R.id.addLocationNameField));
         addLocation.perform(ViewActions.typeText("Library"));
 
         Espresso.closeSoftKeyboard();
 
         //add the overall crowd rating of a 1
-        ViewInteraction enterOverallRating = Espresso.onView(ViewMatchers.withId(R.id.crowdRating));
-        enterOverallRating.perform(ViewActions.typeText("1"));
-
-        Espresso.closeSoftKeyboard();
+        ViewInteraction enterOverallRating = Espresso.onView(ViewMatchers.withId(R.id.ratingButton1AddScreen));
+        enterOverallRating.perform(ViewActions.click());
 
         //hit add location button
         ViewInteraction addLocationButton = Espresso.onView(ViewMatchers.withId(R.id.addLocButton));
@@ -72,35 +70,31 @@ public class AddCommentRatingTest {
         searchGo.perform(ViewActions.click());
 
         //click on the view rating button
-        ViewInteraction addRating = Espresso.onView(ViewMatchers.withText(R.string.add_rating_button_label));
+        ViewInteraction viewLocation = Espresso.onView(ViewMatchers.withText(R.string.view_location_button_label));
+        viewLocation.perform(ViewActions.click());
+
+        // click on the add rating button
+        ViewInteraction addRating = Espresso.onView(ViewMatchers.withId(R.id.addRatingButton));
         addRating.perform(ViewActions.click());
 
-        // go to screen with adding a rating
-        ViewInteraction viRatingsText = Espresso.onView(
-                ViewMatchers.withId(R.id.ratingNumberEntered));
-        // check the text matches the default one
-        viRatingsText.check(
-                ViewAssertions.matches(
-                        ViewMatchers.withText("")));
+        SystemClock.sleep(2000); // wait for add rating screen to display
 
-        // go to the text box for rating number and type in 4
+        // push the button for adding a rating of 5
         ViewInteraction viItemName = Espresso.onView(
-                ViewMatchers.withId(R.id.ratingNumberEntered));
-        viItemName.perform(ViewActions.typeText("5"));
-        //close the keyboard so it can add the button
-        Espresso.closeSoftKeyboard();
+                ViewMatchers.withId(R.id.ratingButton5));
+        viItemName.perform(ViewActions.click());
 
         // find comment button and type in 'busy'
-        ViewInteraction openComment = Espresso.onView(ViewMatchers.withId(R.id.commentText));
-        openComment.perform(ViewActions.typeText("busy"));
+        ViewInteraction openComment = Espresso.onView(ViewMatchers.withId(R.id.commentField));
+        openComment.perform(ViewActions.typeText("very busy"));
 
         Espresso.closeSoftKeyboard();
 
-        // find add button and click it
+        // find add rating button and click it
         Espresso.onView(ViewMatchers.withId(R.id.addRatingToLocButton))
                 .perform(ViewActions.click());
 
-        // go back to the search button
+        // go back to the search screen
         Espresso.onView(ViewMatchers.withId(R.id.searchButton)).perform(ViewActions.click());
 
         //search the location that was just rated
@@ -111,16 +105,28 @@ public class AddCommentRatingTest {
 
         //see if the overall rating for that has changed
 
+        // hit the view location button
+        viewLocation.perform(ViewActions.click());
+
         //rating should be three
         //go to the overall crowd ratings generated text
         ViewInteraction overallCrowdRating = Espresso.onView(
-                ViewMatchers.withId(R.id.resultText));
+                ViewMatchers.withId(R.id.crowdRatingDisplay));
         SystemClock.sleep(2000);
         //split it so its just the substring after :
         //check that it contains the number three in the rating portion
         overallCrowdRating.check(
                 ViewAssertions.matches(
-                        ViewMatchers.withSubstring("Crowd rating: 3.0")));
+                        ViewMatchers.withSubstring("3.0")));
+
+        // now we can check if the comment is visible
+
+        // hit view comments button
+        ViewInteraction viewComments = Espresso.onView(ViewMatchers.withId(R.id.viewCommentsButton));
+        viewComments.perform(ViewActions.click());
+        // does the comment show up?
+        ViewInteraction commentText = Espresso.onView(ViewMatchers.withText("very busy"));
+        commentText.check(ViewAssertions.matches(ViewMatchers.withSubstring("very busy")));
 
     }
     //no test of moving onto next screen because no screen after adding rating unless you click the button to go back to search

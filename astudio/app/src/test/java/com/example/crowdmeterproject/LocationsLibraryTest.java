@@ -27,6 +27,6 @@ public class LocationsLibraryTest {
         LocationsLibrary l = new LocationsLibrary();
         l.addLocation("test");
 
-        assertEquals("Location name: test\nCrowd rating: 0.0", (l.searchByName("test")).toString());
+        assertEquals("[Location name: test\nCrowd rating: 0.0]", (l.searchByName("test")).toString());
     }
 }

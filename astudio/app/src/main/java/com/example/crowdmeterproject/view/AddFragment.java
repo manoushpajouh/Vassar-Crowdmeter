@@ -16,10 +16,13 @@ import com.example.crowdmeterproject.databinding.FragmentAddBinding;
 import com.example.crowdmeterproject.databinding.FragmentSearchBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * Class the manages the add fragment (used for adding new locations).
+ */
 public class AddFragment extends Fragment implements IAddView {
     Listener listener;
     FragmentAddBinding binding;
-    int selectedRating = 0;
+    int selectedRating = 0; //selected rating starts out as 0 (indicates that no rating has been selected)
 
     public AddFragment(@NonNull Listener listener){
         this.listener = listener;
@@ -54,7 +57,6 @@ public class AddFragment extends Fragment implements IAddView {
             }
         }
         );
-
         this.binding.ratingButton3AddScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +65,6 @@ public class AddFragment extends Fragment implements IAddView {
             }
         }
         );
-
         this.binding.ratingButton4AddScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +73,6 @@ public class AddFragment extends Fragment implements IAddView {
             }
         }
         );
-
         this.binding.ratingButton5AddScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,7 @@ public class AddFragment extends Fragment implements IAddView {
                 Snackbar.make(v, String.format("Selected rating of %d", selectedRating), Snackbar.LENGTH_LONG).show();}
         }
         );
-
+        // sets listener for add button
         this.binding.addLocButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 Editable locationNameEditable = binding.addLocationNameField.getText();

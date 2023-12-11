@@ -4,6 +4,9 @@ import com.example.crowdmeterproject.model.Rating;
 import junit.framework.TestCase;
 import com.example.crowdmeterproject.model.Rating;
 
+/**
+ * Test class for the rating class.
+ */
 public class RatingTest extends TestCase {
 
     public void testTestToString() {

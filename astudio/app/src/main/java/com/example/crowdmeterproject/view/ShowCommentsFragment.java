@@ -22,6 +22,10 @@ import java.util.Collections;
 import java.util.List;
 
 
+/***
+ * Class managing the show comments fragment, which displays all of the comments for a
+ * particular location.
+ */
 public class ShowCommentsFragment extends Fragment implements IShowCommentsView {
 
     FragmentShowCommentsBinding binding; // will call the widgets (xml)
@@ -48,13 +52,15 @@ public class ShowCommentsFragment extends Fragment implements IShowCommentsView 
         List<Comment> comments = location.getComments();
         Collections.sort(comments);
 
+        // if there are no comments, make a textView to inform the user
         if (comments.size() == 0){
             TextView noComments = new TextView(this.binding.getRoot().getContext());
             noComments.setText("No comments yet for this location ...");
 
             this.binding.commentsDisplay.addView(noComments);
         }
-        else {
+
+        else { // otherwise display the comments
             for (Comment comment : comments){
                 TextView commentText = new TextView(this.binding.getRoot().getContext());
                 TextView commentTime = new TextView(this.binding.getRoot().getContext());
