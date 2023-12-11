@@ -95,6 +95,8 @@ public class SearchFragment extends Fragment implements ISearchView {
             else {
                 color = "#30FF5722";
             }
+
+
             // add a row to the table to display a location, and set its background to the right color
             TableRow locationRow = new TableRow(this.binding.getRoot().getContext());
             locationRow.setBackgroundColor(Color.parseColor(color));

@@ -49,6 +49,7 @@ public class Rating {
         }
         return retString;
     }
+
     public Date getTime(){
         return this.time;
     }

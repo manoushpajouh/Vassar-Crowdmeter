@@ -18,6 +18,7 @@ import com.example.crowdmeterproject.model.Location;
 
 import java.text.DecimalFormat;
 
+
 /**
  * Class that manages the location fragment. This fragment displays the crowd rating
  * (can be filtered by time) for a location, and has buttons to add a rating to a location
@@ -48,6 +49,7 @@ public class LocationFragment extends Fragment implements ILocationView{
         double ratingAve; // the average rating to be displayed
 
         binding.timeRangeSpinner.setSelection(0); // display crowd rating for all time by default
+
         // sets listener for time range spinner (used to filter rating average)
         binding.timeRangeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -77,6 +79,7 @@ public class LocationFragment extends Fragment implements ILocationView{
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
         // get the right value of ratingAve depending on what the user selected
         switch((String) binding.sliderLabel.getText()){
             case ("Displaying average for 1 hr"):
@@ -97,6 +100,7 @@ public class LocationFragment extends Fragment implements ILocationView{
             default:
                 ratingAve = location.getRatingAve();
         }
+
         // round the average rating to one decimal point
         DecimalFormat df = new DecimalFormat("#.0");
         String ratingAveString = df.format(ratingAve);

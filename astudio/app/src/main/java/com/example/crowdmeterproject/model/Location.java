@@ -40,6 +40,7 @@ public class Location implements Serializable {
         this.name = name;
     }
 
+    // to print a location, display its name and its crowd rating
     public String toString(){
         return "Location name: " + name + "\nCrowd rating: " + crowdRating;
     }
@@ -90,6 +91,7 @@ public class Location implements Serializable {
     public double getRatingAveTime(int hours){
         List<Rating> ratingsInRange = new ArrayList<>();
 
+
         Date now = Calendar.getInstance().getTime(); // get the current time
 
         for (Rating rating : allRatings){ // checks if each rating is within time range
@@ -126,6 +128,7 @@ public class Location implements Serializable {
         allRatings.add(rating);
         this.updateRatingAve();
     }
+
     /**
      * Adds a rating with a comment.
      * @param rateNum

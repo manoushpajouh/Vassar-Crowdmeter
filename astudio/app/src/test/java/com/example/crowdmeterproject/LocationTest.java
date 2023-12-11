@@ -52,6 +52,7 @@ public class LocationTest extends TestCase {
     public void testAddCommentRating() {
         //run the add rating function on a random number to a test location
         Location testLoc = new Location("Library", 0.0);
+
         Comment comment = new Comment("very busy");
 
         testLoc.addCommentRating(2, comment);

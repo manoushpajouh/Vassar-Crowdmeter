@@ -42,9 +42,9 @@ public class LocationsLibrary {
     }
 
     /**
-     * Deletes a location from the library.
-     * @param l
-     */
+     * removes location l from location library
+     * @param l the location to be removed
+*/
     public void deleteLocation(Location l){
         locations.remove(l);
         // remove from database
@@ -55,7 +55,7 @@ public class LocationsLibrary {
     /**
      * Returns all locations whose name matches searchInput.
      * @param searchInput search string
-     * @return lisr of all matching locations
+     * @return list of all matching locations
      */
     public List<Location> searchByName(String searchInput) {
         List<Location> retLocations = new ArrayList<>();
@@ -67,6 +67,11 @@ public class LocationsLibrary {
         }
         return retLocations;
     }
+
+    /**
+     * returns the locations in the locations library
+     * @return locations in locations library
+     */
     public List<Location> getLocations(){
         return this.locations;
     }

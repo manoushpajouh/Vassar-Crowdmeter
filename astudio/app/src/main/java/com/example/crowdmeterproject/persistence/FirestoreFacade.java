@@ -75,5 +75,4 @@ public class FirestoreFacade implements IPersistenceFacade{
             }
         });
     }
-
 }

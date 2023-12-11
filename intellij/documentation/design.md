@@ -9,29 +9,44 @@ hide circle
 
 ' classes 
 
-class User{
+class Controller{
 }
 
-class Rating{
-number
-comment
-}
-
-class LocationsOptions{
-locations list
+class LocationsLibrary{
+locations 
 }
 
 class Location{
 name
 crowdRating
 allRatings
+allComments
 }
 
+class Rating{
+number
+comment
+time
+}
+
+class Comment{
+text 
+time
+}
+
+
 ' associations 
-Rating "1..*"  - "1" Location : \t describes \t
+
+LocationsLibrary "1" -down- "0..*" Location : \t contains
+Location "1" - "0..*" Rating : \t described by \t
+Rating "1" - "0..*" Comment : \t described by \t
+
+
+User "1..*" -left- "1" Controller: \t calls-on\t
+User "1" - "0..*" Comment: \t writes \t
+Controller "1" -- "1" LocationsLibrary: \t searches-through \t
 User "1..*" -- "1..*" Rating : creates
-LocationsOptions "1" -down- "*" Location : contains
-User "1..*" -right- "1" LocationsOptions: \t searches-through\t
+
 
 @enduml
 ```
@@ -43,7 +58,51 @@ User "1..*" -right- "1" LocationsOptions: \t searches-through\t
 @startuml
 
 class User{
+main(String args[]): void
 }
+
+class Controller{
+addCommentRatingToLoc(Comment comment, int number, IAddRatingsView view): void 
+addRatingToLoc(int number, IAddRatingsView view): void 
+completedRatings(): void 
+getAllLocations(): List<Location>
+
+}
+
+class LocationsLibrary{
+locations: Location ArrayList 
+--
+LocationsLibrary()
+--
+toString(): String
+addLocation(String name): Location 
+deleteLocation(Location l): void
+searchByName(String searchInput): List<Location>
+getLocations: List<Location>
+}
+
+class Location {
+name: String
+crowdRating: double
+allRatings: List<Rating>
+allComments: List<Comment>
+--
+Location(String name, double crowdRating)
+Location(String name)
+--
+toString(): String
+getName() : String
+getComments() : List<Comment>
+getRatingAve(): double
+getRatingAveTime(int hours) : double 
+updateRatingAve(): void
+addRating(int ratingNumber): void 
+addCommentRating(int rateNum, Comment newComment): void 
+assignColor(): String 
+toMap(): Map<String, Object>
+fromMap(Map<String, Object> map): Location
+}
+
 
 class Rating{
 number: int
@@ -53,41 +112,32 @@ Rating(int number)
 Rating(int number, String comment)
 --
 toString(): String 
+getTime(): Date
+toMap(): Map<String, Object> 
+fromMap(Map<String, Object> map): Rating
 
 }
 
-class LocationsOptions{
-locations: Location ArrayList 
---
-locationExists(): boolean
-toString(): String
-addLocation(): void
-searchByName(): Location
+class Comment{
+text: String
+time: Date
+-- 
+Comment(String text)
+-- 
+getText(): String 
+getTime() : Date 
+compareTo(Object e): int
+
 }
-
-class Location {
-name: String
-crowdRating: double
-allRatings: Array List of Ratings 
---
-toString(): String
-addRating(): void
-addCommentRating(): void
-getRatingAve(): double
-assignColor(): String 
-}
-
-
-User .down.> Rating
-User .> LocationsOptions
-Rating .right.> Location
-LocationsOptions .down.> Location
 
 ' associations 
 Rating "1..*"  - "1" Location : \t describes \t
 User "1..*" -- "1..*" Rating : creates
-LocationsOptions "1" -down- "*" Location : contains
-User "1..*" -right- "1" LocationsOptions: \t searches-through\t
+LocationsLibrary "1" -down- "*" Location : contains
+User "1..*" -right- "1" Controller: \t calls-on \t
+Controller "1" - "1" LocationsLibrary: searches-through 
+Rating "1" -left- "0..*" Comment: described-by
+User "1" - "0..*" Comment: \t writes \t
 
 
 @enduml
@@ -117,59 +167,37 @@ ui -> user: display desired location info
 @enduml
 ```
 
-# Report Busyness Sequence Diagram : Goal Diagram 
+# Add Location Sequence Diagram
 
 ```plantuml
 @startuml
-actor Rater as rater 
+actor Viewer as viewer 
 participant " : User Interface" as ui
 participant " : Controller" as controller
 participant " : Location" as location 
-participant " : LocationsOptions" as locOps 
-participant " : Rating" as ratings 
-participant " : ratingTimer" as timer 
+participant " : LocationsLibrary" as lib 
 
-rater -> ui  : select "Rate A Location"
-ui -> controller : run timeOver()
-controller -> timer : timeOver()
-timer -> controller : return timeOver()
-controller -> ratings  : canRate()
-ratings -> controller : return canRate()
-alt canRate()
+viewer -> ui: click button to add location 
+ui -> controller: signal button has been clicked
+controller -> ui : display add location fragment
+ui -> viewer: display add location fragment 
 
-controller -> locOps :  Get locationsList
-locOps -> ui : Return locationsList
-ui ->  rater : Display locationsList
-rater -> ui : select a location
-ui -> controller : run locationExists
-controller -> locOps: locationExists
+viewer -> ui : Enter Name for Location 
+viewer -> ui: Click Add Location Button 
+ui -> controller : onClick()
+controller -> location: make location: Location() 
+location -> controller: return location
 
-alt !locationExists()
-locOps -> location : Execute __Add Location__ 
-location -> controller : return location 
-else locationExists()
-locOps  -> controller : getLocation()
-end
+controller -> lib : add location to library: addLocation();
+lib -> controller: return locations
+controller -> ui : return locations
 
-controller -> ui : Open Textbox for User 
-ui -> rater : Display Textbox to Rate
-rater -> ui : Enter Rating Requirements
-ui -> controller : Input into makeRating
-controller -> ratings : makeRating(number: int, color: String, comment: String)
-
-ratings -> timer : updateTime();
-timer -> controller : return getTime()
-controller -> ui : display getTime()
-ui -> rater : Display "Time Until Next Rating"
-
-else !canRate()
-ui -> rater : Display "Timer Not Yet Over"
-end
 
 @enduml
 ```
 
-# Current Version of Report Busyness
+
+# Report Busyness (for already existing location) Sequence Diagram
 
 ```plantuml
 @startuml
@@ -178,22 +206,18 @@ actor Rater as rater
 participant " : User Interface" as ui
 participant " : Controller" as controller
 participant " : Location" as location 
-participant " : LocationsOptions" as locOps 
-participant " : Rating" as ratings 
 
-controller -> locOps : Execute __Check Busyness__
-    alt !locationExists()
-        locOps -> location : Execute __Add Location__ 
-    else locationExists()
-        locOps  -> controller : getLocation()
-    end
-   
-controller -> ui : Open Text box for User
-ui -> rater : Display Text box to Rate
-rater -> ui : Enter Rating Requirements
-ui -> controller : location.addRating()
-controller -> ratings : addCommentRating(number: int, comment: String)
-controller -> ratings : addRating(number: int)
+
+rater -> ui : search for location 
+ui -> controller: Execute __Browse Locations__
+rater -> ui: choose location 
+ui -> controller: notify that location was chosen 
+controller -> ui : display add rating fragment 
+ui -> rater : display rating boxes 
+rater -> ui : fill in rating requirements
+ui -> controller: notify that requirements have been filled in
+controller -> location : addCommentRating(number: int, comment: String)
+controller -> location : addRating(number: int)
 
 @enduml
 ```
@@ -205,53 +229,24 @@ controller -> ratings : addRating(number: int)
 actor Viewer as viewer 
 participant " : User Interface" as ui
 participant " : Controller" as controller
+participant " : LocationsLibrary" as lib 
 participant " : Location" as location 
-participant " : LocationsOptions" as locOps 
 participant " : Rating" as ratings 
 
-ui -> controller : locationsOptions.toString()
-controller -> locOps :  toString();
-ui -> viewer : display locationsOptions.toString()
+viewer -> ui : hit button to search for location 
+ui -> controller : notify button has been hit 
+controller -> ui : Execute __Browse Locations__
+ui -> viewer : display locations 
+viewer -> ui : click view rating button 
+ui -> controller : notify button for location has been hit
 
-viewer -> ui : Enter location
+controller -> lib : searchByName(location name input)
+lib -> location : getRatingAve()
+location -> controller : return crowdRatingAve
 
-    alt locationExists() 
-    controller -> location: getRatingAve()
-    location -> controller : return getRatingAve()
-    controller -> ui : display getRatingAve()
-    ui -> viewer : display "Want To Add Rating?" and "Yes" "No" options
-        alt yes
-        viewer -> ui : Choose "Yes"
-        ui -> controller : Execute __Report Busyness__
-        
-        else no 
-        viewer -> ui : Choose "No" 
-        ui -> controller : Close  
-        end
-    
-    else !locationExists()
-    ui -> controller: execute __Add Location__
 
-end
-
-@enduml
-```
-
-# Add Location Sequence Diagram
-
-```plantuml
-@startuml
-actor Viewer as viewer 
-participant " : User Interface" as ui
-participant " : Controller" as controller
-participant " : Location" as location 
-participant " : LocationsOptions" as locOps 
-participant " : Rating" as ratings 
-
-viewer -> ui : Enter Name for Location 
-ui -> controller : locOps.toString()
-controller -> locOps : addLocation();
-
+controller -> ui : return location.crowdRating()
+ui -> viewer : display location.crowdRating()
 
 @enduml
 ```

@@ -21,11 +21,13 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+
 /***
  * Class managing the show comments fragment, which displays all of the comments for a
  * particular location.
  */
 public class ShowCommentsFragment extends Fragment implements IShowCommentsView {
+
     FragmentShowCommentsBinding binding; // will call the widgets (xml)
     Listener listener; // like the controller --> will recognize when button is clicked etc
     Location location; // the location for which the comments are displayed
@@ -49,6 +51,7 @@ public class ShowCommentsFragment extends Fragment implements IShowCommentsView 
 
         List<Comment> comments = location.getComments();
         Collections.sort(comments);
+
         // if there are no comments, make a textView to inform the user
         if (comments.size() == 0){
             TextView noComments = new TextView(this.binding.getRoot().getContext());
@@ -56,6 +59,7 @@ public class ShowCommentsFragment extends Fragment implements IShowCommentsView 
 
             this.binding.commentsDisplay.addView(noComments);
         }
+
         else { // otherwise display the comments
             for (Comment comment : comments){
                 TextView commentText = new TextView(this.binding.getRoot().getContext());
@@ -69,7 +73,7 @@ public class ShowCommentsFragment extends Fragment implements IShowCommentsView 
                 boolean dayMatches = then.get(Calendar.DAY_OF_MONTH) == now.get(Calendar.DAY_OF_MONTH);
 
                 commentText.setText(comment.getText());
-                
+
                 if (yearMatches && monthMatches && dayMatches){
                     commentTime.setText("Today at " + DateFormat.getTimeInstance(DateFormat.SHORT)
                             .format(comment.getTime()));

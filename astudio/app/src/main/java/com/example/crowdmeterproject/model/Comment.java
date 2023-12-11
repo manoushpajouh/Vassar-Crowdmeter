@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Class representing a comment created by a user for a location. Comments have a
  * time field that indicates when they were created.
@@ -31,6 +32,7 @@ public class Comment implements Comparable {
     public void setTime(Date time){
         this.time = time;
     }
+
 
 
     /**

@@ -22,7 +22,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class AddFragment extends Fragment implements IAddView {
     Listener listener;
     FragmentAddBinding binding;
-    int selectedRating = 0; // selected rating starts out as 0 (indicates that no rating has been selected)
+    int selectedRating = 0; //selected rating starts out as 0 (indicates that no rating has been selected)
 
     public AddFragment(@NonNull Listener listener){
         this.listener = listener;
@@ -48,6 +48,7 @@ public class AddFragment extends Fragment implements IAddView {
             }
         }
         );
+
         this.binding.ratingButton2AddScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -34,6 +34,15 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
         this.listener = listener;
     }
 
+    /**
+     * onCreateView() overrides method of the same name from superclass. It's purpose is to
+     * inflate the xml layout associated with the fragment.
+     * @param inflater object to use to inflate the xml layout (create actual graphical widgets out of the xml declarations)
+     * @param container where the graphical widgets will be placed
+     * @param savedInstanceState any saved state information to be restored (null if none exists)
+     * @return the root of the layout that has just been inflated
+     */
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,11 +50,25 @@ public class AddRatingFragment extends Fragment implements IAddRatingsView {
         return this.binding.getRoot();
     }
 
+    /**
+     * onViewCreated() overrides method of the same name from superclass. It is called by the
+     * android platform after the layout has been inflated, and before the view transitions to the
+     * created state.
+     *
+     * @param view the layout's root view
+     * @param savedInstanceState any saved state information to be restored (null if none exists)
+     */
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // register add button click listener so you know when you press the button - made interactive
         this.binding.ratingButton1.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when associated button is clicked.
+             * @param v The view that was clicked.
+             */
+
             @Override
             public void onClick(View v) {
                 selectedRating = 1;
