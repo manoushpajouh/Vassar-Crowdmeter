@@ -60,6 +60,11 @@ public class Location {
         return crowdRating;
     }
 
+    /**
+     * function gets the average rating from a certain period of time specified by the user
+     * @param hours the number of hours that the user wants to look through
+     * @return the rating average at a certain period of time
+     */
     public double getRatingAveTime(int hours){
         List<Rating> ratingsInRange = new ArrayList<>();
 

@@ -34,7 +34,8 @@ public class MainView implements IMainView {
         });
         }
 
-        public View getRootView() {
+
+    public View getRootView() {
             return binding.getRoot();
         }
 
