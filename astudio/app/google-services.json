@@ -7,11 +7,7 @@
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
         "mobilesdk_app_id": "1:549918419156:android:a9155d3f48b3ebdaa4f341",
-=======
-        "mobilesdk_app_id": "1:911279971539:android:f198ffe90f437a02084826",
->>>>>>> d645b2c69ae4c56d751b946e5d7a1ea1757cbe1a
         "android_client_info": {
           "package_name": "com.example.crowdmeterproject"
         }
@@ -19,11 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-<<<<<<< HEAD
           "current_key": "AIzaSyAK8I3Uk5CWlIGISLsNPK044P7nfJ_xepA"
-=======
-          "current_key": "AIzaSyCUFm3-veWR5vg5Hi0zy1OPQgg5gw1_U7Y"
->>>>>>> d645b2c69ae4c56d751b946e5d7a1ea1757cbe1a
         }
       ],
       "services": {
